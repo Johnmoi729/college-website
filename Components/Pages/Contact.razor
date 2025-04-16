@@ -1,0 +1,123 @@
+@page "/contact"
+@using FeedbackModel = CollegeWebsite.Models.Feedback
+@using CollegeWebsite.Models
+@using CollegeWebsite.Services
+@inject NavigationManager NavigationManager
+
+<PageTitle>Contact Us - College Website</PageTitle>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Contact Us</h1>
+    
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Send Us a Message</h3>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="@contactForm" OnValidSubmit="HandleValidSubmit">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <InputText id="name" class="form-control" @bind-Value="contactForm.Name" />
+                            <ValidationMessage For="@(() => contactForm.Name)" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <InputText id="email" class="form-control" @bind-Value="contactForm.Email" />
+                            <ValidationMessage For="@(() => contactForm.Email)" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <InputText id="subject" class="form-control" @bind-Value="contactForm.Subject" />
+                            <ValidationMessage For="@(() => contactForm.Subject)" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <InputTextArea id="message" class="form-control" rows="5" @bind-Value="contactForm.Message" />
+                            <ValidationMessage For="@(() => contactForm.Message)" />
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </EditForm>
+                    
+                    @if (showSuccessMessage)
+                    {
+                        <div class="alert alert-success mt-3">
+                            Your message has been sent successfully. We will get back to you soon.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Contact Information</h3>
+                </div>
+                <div class="card-body">
+                    <h5>College Address</h5>
+                    <address>
+                        <strong>University College</strong><br>
+                        123 Education Avenue<br>
+                        Academic City, AC 12345<br>
+                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                    </address>
+                    
+                    <h5 class="mt-4">Email</h5>
+                    <p><a href="mailto:info@collegeedu.com">info@collegeedu.com</a></p>
+                    
+                    <h5 class="mt-4">Office Hours</h5>
+                    <p>Monday - Friday: 8:00 AM - 5:00 PM<br>
+                    Saturday: 9:00 AM - 1:00 PM<br>
+                    Sunday: Closed</p>
+                    
+                    <h5 class="mt-4">Connect With Us</h5>
+                    <div class="d-flex gap-3 fs-4">
+                        <a href="#" class="text-primary"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-info"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-danger"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-primary"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Campus Map</h3>
+        </div>
+        <div class="card-body">
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s123%20William%20St%2C%20New%20York%2C%20NY%2010038%2C%20USA!5e0!3m2!1sen!2sus!4v1579090350945!5m2!1sen!2sus" 
+                        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <div class="alert alert-info mb-4">
+        <h4>Department-Specific Inquiries</h4>
+        <p>For inquiries related to specific departments, please visit our <a href="/departments">Departments</a> page to find contact information for each department.</p>
+    </div>
+</div>
+
+@code {
+    private FeedbackModel contactForm = new FeedbackModel();
+    private bool showSuccessMessage = false;
+    
+    private void HandleValidSubmit()
+    {
+        // In a real application, you would save the form data to the database here
+        // For now, we'll just show a success message
+        showSuccessMessage = true;
+        contactForm = new FeedbackModel(); // Reset the form
+    }
+}

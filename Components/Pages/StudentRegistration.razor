@@ -1,0 +1,134 @@
+@page "/student-registration"
+@using CollegeWebsite.Models
+@using CollegeWebsite.Services
+@inject IMongoDBService<Student> StudentService
+@inject IMongoDBService<Department> DepartmentService
+
+<PageTitle>Student Registration</PageTitle>
+
+<h1>Student Registration</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>Register as a New Student</h3>
+            </div>
+            <div class="card-body">
+                <EditForm Model="@student" OnValidSubmit="HandleValidSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="mb-3">
+                        <label for="studentId" class="form-label">Student ID</label>
+                        <InputText id="studentId" @bind-Value="student.StudentId" class="form-control" />
+                        <ValidationMessage For="@(() => student.StudentId)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <InputText id="firstName" @bind-Value="student.FirstName" class="form-control" />
+                        <ValidationMessage For="@(() => student.FirstName)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <InputText id="lastName" @bind-Value="student.LastName" class="form-control" />
+                        <ValidationMessage For="@(() => student.LastName)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <InputText id="email" @bind-Value="student.Email" class="form-control" />
+                        <ValidationMessage For="@(() => student.Email)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <InputText id="phone" @bind-Value="student.Phone" class="form-control" />
+                        <ValidationMessage For="@(() => student.Phone)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <InputTextArea id="address" @bind-Value="student.Address" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="department" class="form-label">Department</label>
+                        <InputSelect id="department" @bind-Value="student.DepartmentId" class="form-control">
+                            <option value="">-- Select Department --</option>
+                            @if (departments != null)
+                            {
+                                @foreach (var dept in departments)
+                                {
+                                    <option value="@dept.Id">@dept.Name</option>
+                                }
+                            }
+                        </InputSelect>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </EditForm>
+
+                @if (showSuccessMessage)
+                {
+                    <div class="alert alert-success mt-3" role="alert">
+                        Registration successful! Your student ID is @student.StudentId.
+                    </div>
+                }
+
+                @if (showErrorMessage)
+                {
+                    <div class="alert alert-danger mt-3" role="alert">
+                        Registration failed. Please try again.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Student student = new Student();
+    private List<Department>? departments;
+    private bool showSuccessMessage = false;
+    private bool showErrorMessage = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        departments = await DepartmentService.GetAllAsync();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            // Check if student ID already exists
+            var existingStudent = await StudentService.FindAsync(s => s.StudentId == student.StudentId);
+            if (existingStudent.Any())
+            {
+                showErrorMessage = true;
+                showSuccessMessage = false;
+                return;
+            }
+
+            // Set enrollment date to current date
+            student.EnrollmentDate = DateTime.Now;
+            
+            // Create new student
+            await StudentService.CreateAsync(student);
+            
+            showSuccessMessage = true;
+            showErrorMessage = false;
+            
+            // Reset form
+            student = new Student();
+        }
+        catch
+        {
+            showErrorMessage = true;
+            showSuccessMessage = false;
+        }
+    }
+}

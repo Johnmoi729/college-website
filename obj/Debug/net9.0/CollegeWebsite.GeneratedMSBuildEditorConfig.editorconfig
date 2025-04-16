@@ -1,0 +1,97 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CollegeWebsite
+build_property.RootNamespace = CollegeWebsite
+build_property.ProjectDir = E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/AdminDashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbkRhc2hib2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/AdminLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbkxvZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Contact.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250YWN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/CourseDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3Vyc2VEZXRhaWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Courses.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3Vyc2VzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Departments.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEZXBhcnRtZW50cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Facilities.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGYWNpbGl0aWVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Faculty.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGYWN1bHR5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Feedback.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGZWVkYmFjay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/StudentRegistration.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdHVkZW50UmVnaXN0cmF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-lm218nrz23
+
+[E:/P1/dotnet_vscode file collections/dotnet-college-website/CollegeWebsite/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-klcnrztk72

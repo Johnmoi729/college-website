@@ -1,0 +1,172 @@
+@page "/admin/dashboard"
+@using CollegeWebsite.Models
+@using CollegeWebsite.Services
+@inject IMongoDBService<Student> StudentService
+@inject IMongoDBService<Course> CourseService
+@inject IMongoDBService<Department> DepartmentService
+@inject IMongoDBService<Faculty> FacultyService
+
+<PageTitle>Admin Dashboard</PageTitle>
+
+<h1>Admin Dashboard</h1>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Students</h5>
+                <p class="card-text display-4">@studentCount</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <span>Total Students</span>
+                <a href="/admin/students" class="btn btn-sm btn-light">Manage</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Courses</h5>
+                <p class="card-text display-4">@courseCount</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <span>Total Courses</span>
+                <a href="/admin/courses" class="btn btn-sm btn-light">Manage</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Departments</h5>
+                <p class="card-text display-4">@departmentCount</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <span>Total Departments</span>
+                <a href="/admin/departments" class="btn btn-sm btn-light">Manage</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-white mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Faculty</h5>
+                <p class="card-text display-4">@facultyCount</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <span>Total Faculty</span>
+                <a href="/admin/faculty" class="btn btn-sm btn-light">Manage</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5>Recent Student Registrations</h5>
+            </div>
+            <div class="card-body">
+                @if (recentStudents == null || !recentStudents.Any())
+                {
+                    <p>No recent student registrations.</p>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Registration Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var student in recentStudents)
+                            {
+                                <tr>
+                                    <td>@student.StudentId</td>
+                                    <td>@student.FirstName @student.LastName</td>
+                                    <td>@student.EnrollmentDate.ToShortDateString()</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5>Popular Courses</h5>
+            </div>
+            <div class="card-body">
+                @if (popularCourses == null || !popularCourses.Any())
+                {
+                    <p>No course enrollment data available.</p>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Course Name</th>
+                                <th>Enrolled Students</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var course in popularCourses)
+                            {
+                                <tr>
+                                    <td>@course.CourseCode</td>
+                                    <td>@course.Name</td>
+                                    <td>@(course.EnrolledStudentIds?.Count ?? 0)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private int studentCount = 0;
+    private int courseCount = 0;
+    private int departmentCount = 0;
+    private int facultyCount = 0;
+    private List<Student>? recentStudents;
+    private List<Course>? popularCourses;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Get counts
+        var students = await StudentService.GetAllAsync();
+        studentCount = students.Count;
+
+        var courses = await CourseService.GetAllAsync();
+        courseCount = courses.Count;
+
+        var departments = await DepartmentService.GetAllAsync();
+        departmentCount = departments.Count;
+
+        var faculty = await FacultyService.GetAllAsync();
+        facultyCount = faculty.Count;
+
+        // Get recent students (last 5)
+        recentStudents = students
+            .OrderByDescending(s => s.EnrollmentDate)
+            .Take(5)
+            .ToList();
+
+        // Get popular courses (top 5 by enrollment)
+        popularCourses = courses
+            .OrderByDescending(c => c.EnrolledStudentIds?.Count ?? 0)
+            .Take(5)
+            .ToList();
+    }
+}

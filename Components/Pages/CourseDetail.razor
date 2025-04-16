@@ -1,0 +1,175 @@
+@page "/courses/{Id}"
+@using CollegeWebsite.Models
+@using CollegeWebsite.Services
+@using FacultyModel = CollegeWebsite.Models.Faculty
+@inject IMongoDBService<Course> CourseService
+@inject IMongoDBService<FacultyModel> FacultyService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Course Details</PageTitle>
+
+<div class="container mt-4">
+    @if (loading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (course == null)
+    {
+        <div class="alert alert-warning">
+            <h4>Course Not Found</h4>
+            <p>The requested course could not be found.</p>
+            <button class="btn btn-primary" @onclick='() => NavigationManager.NavigateTo("/courses")'>Back to Courses</button>       
+            </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h2>@course.Name</h2>
+                <button class="btn btn-primary" @onclick='() => NavigationManager.NavigateTo("/courses")'>Back to Courses</button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 class="text-primary">Course Information</h4>
+                        <div class="mb-3">
+                            <strong>Course Code:</strong> @course.CourseCode
+                        </div>
+                        <div class="mb-3">
+                            <strong>Description:</strong>
+                            <p>@(course.Description ?? "No description available.")</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Credits:</strong> @course.Credits
+                        </div>
+                        <div class="mb-3">
+                            <strong>Schedule:</strong> @(course.Schedule ?? "TBA")
+                        </div>
+                        <div class="mb-3">
+                            <strong>Department:</strong> @(course.DepartmentId ?? "Not assigned")
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">Enrollment Information</h5>
+                                <p><strong>Capacity:</strong> @course.Capacity</p>
+                                <p><strong>Enrolled Students:</strong> @(course.EnrolledStudentIds?.Count ?? 0)</p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar" role="progressbar" style="width: @GetEnrollmentPercentage()%"
+                                        aria-valuenow="@GetEnrollmentPercentage()" aria-valuemin="0" aria-valuemax="100">
+                                        @GetEnrollmentPercentage()%
+                                    </div>
+                                </div>
+                                <p><strong>Status:</strong>
+                                    @if (course.EnrolledStudentIds?.Count >= course.Capacity)
+                                    {
+                                        <span class="badge bg-danger">Full</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">Open</span>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (course.EnrolledStudentIds?.Count > 0)
+                {
+                    <div class="mt-4">
+                        <h4 class="text-primary">Enrolled Students</h4>
+                        <p>Total Students: @(course.EnrolledStudentIds?.Count ?? 0)</p>
+                        <!-- Student list would go here if we had access to student data -->
+                        <div class="alert alert-info">
+                            Student details are not available in this view.
+                        </div>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(course.InstructorId))
+                {
+                    <div class="mt-4">
+                        <h4 class="text-primary">Instructor Information</h4>
+                        @if (instructor == null)
+                        {
+                            <p><strong>Instructor ID:</strong> @course.InstructorId</p>
+                            <div class="alert alert-info">
+                                Loading instructor details...
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">@instructor.Name</h5>
+                                    <p class="card-text"><strong>Position:</strong> @(instructor.Position ?? "Not specified")</p>
+                                    <p class="card-text"><strong>Email:</strong> @instructor.Email</p>
+                                    <p class="card-text"><strong>Phone:</strong> @instructor.Phone</p>
+                                    <p class="card-text"><strong>Office:</strong> @(instructor.Office ?? "Not assigned")</p>
+                                    <a href="/faculty" class="btn btn-outline-primary btn-sm">View Faculty Directory</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    private Course course;
+    private FacultyModel instructor;
+    private bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCourse();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadCourse();
+    }
+
+    private async Task LoadCourse()
+    {
+        loading = true;
+        try
+        {
+            course = await CourseService.GetByIdAsync(Id);
+            
+            // Load instructor details if available
+            if (course != null && !string.IsNullOrEmpty(course.InstructorId))
+            {
+                instructor = await FacultyService.GetByIdAsync(course.InstructorId);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading course: {ex.Message}");
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+
+    private int GetEnrollmentPercentage()
+    {
+        if (course.Capacity <= 0)
+            return 0;
+
+        int enrolledCount = course.EnrolledStudentIds?.Count ?? 0;
+        return (int)Math.Min(100, Math.Round((double)enrolledCount / course.Capacity * 100));
+    }
+}

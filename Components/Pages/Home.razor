@@ -1,0 +1,214 @@
+﻿@page "/"
+@using CollegeWebsite.Models
+@using CollegeWebsite.Services
+@inject IMongoDBService<Department> DepartmentService
+@inject IMongoDBService<Course> CourseService
+
+<PageTitle>Home - College Website</PageTitle>
+
+<div class="container mt-4">
+    <div class="jumbotron bg-light p-5 rounded">
+        <h1 class="display-4">Welcome to Our College</h1>
+        <p class="lead">Empowering students with knowledge and skills for a successful future.</p>
+        <hr class="my-4">
+        <p>Explore our departments, courses, and register as a student to begin your educational journey with us.</p>
+        <div class="d-flex gap-2">
+            <a class="btn btn-primary btn-lg" href="/departments" role="button">Explore Departments</a>
+            <a class="btn btn-success btn-lg" href="/student-registration" role="button">Register Now</a>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Departments</h2>
+                    <p class="card-text">Discover our diverse academic departments offering specialized education in various fields.</p>
+                    <p class="card-text"><strong>Available Departments:</strong> @departmentCount</p>
+                    <a href="/departments" class="btn btn-primary">View Departments</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Courses</h2>
+                    <p class="card-text">Browse through our comprehensive range of courses designed to meet industry standards.</p>
+                    <p class="card-text"><strong>Available Courses:</strong> @courseCount</p>
+                    <a href="/courses" class="btn btn-primary">View Courses</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Faculty</h2>
+                    <p class="card-text">Learn from our experienced and dedicated faculty members who are experts in their fields.</p>
+                    <a href="/faculty" class="btn btn-primary">View Faculty</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Upcoming Events</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var evt in upcomingEvents)
+                        {
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@evt.Title</h5>
+                                        <p class="card-text"><i class="bi bi-calendar"></i> @evt.Date.ToString("MMMM dd, yyyy")</p>
+                                        <p class="card-text">@evt.Description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="mb-0">College Achievements</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3 text-center">
+                            <div class="achievement-icon mb-2">
+                                <i class="bi bi-trophy text-warning" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5>Top 50 College</h5>
+                            <p>Ranked among the top 50 colleges nationwide for academic excellence</p>
+                        </div>
+                        <div class="col-md-4 mb-3 text-center">
+                            <div class="achievement-icon mb-2">
+                                <i class="bi bi-award text-warning" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5>Research Excellence</h5>
+                            <p>Recognized for outstanding contributions to research in multiple fields</p>
+                        </div>
+                        <div class="col-md-4 mb-3 text-center">
+                            <div class="achievement-icon mb-2">
+                                <i class="bi bi-mortarboard text-warning" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5>95% Graduate Employment</h5>
+                            <p>Our graduates achieve 95% employment rate within six months of graduation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Featured Courses</h3>
+                </div>
+                <div class="card-body">
+                    @if (featuredCourses == null || !featuredCourses.Any())
+                    {
+                        <p>No courses available at the moment.</p>
+                    }
+                    else
+                    {
+                        <div class="list-group">
+                            @foreach (var course in featuredCourses)
+                            {
+                                <a href="/courses/@course.Id" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">@course.Name</h5>
+                                        <small>@course.Credits credits</small>
+                                    </div>
+                                    <p class="mb-1">@(course.Description?.Length > 100 ? course.Description.Substring(0, 100) + "..." : course.Description ?? "No description available.")</p>
+                                    <small>Course Code: @course.CourseCode</small>
+                                </a>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Quick Links</h3>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="/student-registration" class="list-group-item list-group-item-action">Student Registration</a>
+                        <a href="/courses" class="list-group-item list-group-item-action">Course Catalog</a>
+                        <a href="/departments" class="list-group-item list-group-item-action">Academic Departments</a>
+                        <a href="/faculty" class="list-group-item list-group-item-action">Faculty Directory</a>
+                        <a href="/facilities" class="list-group-item list-group-item-action">Campus Facilities</a>
+                        <a href="/contact" class="list-group-item list-group-item-action">Contact Us</a>
+                        <a href="/feedback" class="list-group-item list-group-item-action">Provide Feedback</a>
+                        <a href="/admin/login" class="list-group-item list-group-item-action">Admin Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private int departmentCount = 0;
+    private int courseCount = 0;
+    private List<Course>? featuredCourses;
+    private List<EventInfo> upcomingEvents = new List<EventInfo>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var departments = await DepartmentService.GetAllAsync();
+        departmentCount = departments.Count;
+
+        var courses = await CourseService.GetAllAsync();
+        courseCount = courses.Count;
+
+        // Get a few random courses to feature (up to 5)
+        featuredCourses = courses
+            .OrderBy(_ => Guid.NewGuid()) // Simple way to randomize
+            .Take(Math.Min(5, courses.Count))
+            .ToList();
+            
+        // Sample upcoming events (in a real app, these would come from a database)
+        upcomingEvents = new List<EventInfo>
+        {
+            new EventInfo { 
+                Title = "Fall Semester Orientation", 
+                Date = DateTime.Now.AddDays(15), 
+                Description = "Welcome session for new students with campus tours and department introductions." 
+            },
+            new EventInfo { 
+                Title = "Career Fair", 
+                Date = DateTime.Now.AddDays(30), 
+                Description = "Annual career fair with over 50 employers from various industries." 
+            },
+            new EventInfo { 
+                Title = "Research Symposium", 
+                Date = DateTime.Now.AddDays(45), 
+                Description = "Showcase of student and faculty research projects across all departments." 
+            }
+        };
+    }
+    
+    // Simple class to represent events
+    private class EventInfo
+    {
+        public string Title { get; set; } = "";
+        public DateTime Date { get; set; }
+        public string Description { get; set; } = "";
+    }
+}

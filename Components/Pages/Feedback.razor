@@ -1,0 +1,101 @@
+@page "/feedback"
+
+<PageTitle>Feedback - College Website</PageTitle>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Feedback</h1>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Share Your Feedback</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead">We value your opinion! Please take a moment to share your thoughts about our
+                        college, courses, or services.</p>
+                    
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        <strong>Coming Soon!</strong> Our feedback submission system is currently under maintenance. 
+                        Please check back later to submit your feedback.
+                    </div>
+                    
+                    <!-- Static Form Display (Non-functional) -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" disabled>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="your.email@example.com" disabled>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Feedback Subject" disabled>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Your feedback message here..." disabled></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Rating</label>
+                            <div class="d-flex gap-2">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rating" id="rating-@i" value="@i" disabled>
+                                        <label class="form-check-label" for="rating-@i">@i</label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" disabled>Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">Why Your Feedback Matters</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="bi bi-graph-up text-primary" style="font-size: 2.5rem;"></i>
+                            <h5 class="mt-2">Continuous Improvement</h5>
+                            <p>Your feedback helps us identify areas where we can improve our services and educational
+                                offerings.</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="bi bi-people text-primary" style="font-size: 2.5rem;"></i>
+                            <h5 class="mt-2">Student Experience</h5>
+                            <p>We're committed to providing the best possible experience for our students and community.
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="bi bi-lightbulb text-primary" style="font-size: 2.5rem;"></i>
+                            <h5 class="mt-2">Innovation</h5>
+                            <p>Your suggestions can lead to innovative solutions and new programs that benefit everyone.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    // No code needed for static placeholder page
+}

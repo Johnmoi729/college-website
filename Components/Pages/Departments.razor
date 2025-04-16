@@ -1,0 +1,76 @@
+@page "/departments"
+@using CollegeWebsite.Models
+@using CollegeWebsite.Services
+@inject IMongoDBService<Department> DepartmentService
+
+<PageTitle>Departments</PageTitle>
+
+<h1>Departments</h1>
+
+<div class="row mb-4">
+    <div class="col">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search departments..." @bind="searchTerm" @bind:event="oninput" />
+            <button class="btn btn-outline-primary" type="button" @onclick="FilterDepartments">Search</button>
+        </div>
+    </div>
+</div>
+
+@if (departments == null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (!departments.Any())
+{
+    <p>No departments found.</p>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var department in filteredDepartments)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@department.Name</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@department.DepartmentCode</h6>
+                        <p class="card-text">@(department.Description ?? "No description available.")</p>
+                        <p><strong>Faculty Members:</strong> @(department.FacultyIds?.Count ?? 0)</p>
+                        <p><strong>Courses Offered:</strong> @(department.CourseIds?.Count ?? 0)</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/departments/@department.Id" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private List<Department>? departments;
+    private List<Department>? filteredDepartments;
+    private string searchTerm = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        departments = await DepartmentService.GetAllAsync();
+        filteredDepartments = departments;
+    }
+
+    private void FilterDepartments()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredDepartments = departments;
+        }
+        else
+        {
+            filteredDepartments = departments?
+                .Where(d => d.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                           d.DepartmentCode.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                           (d.Description != null && d.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+        }
+    }
+}
