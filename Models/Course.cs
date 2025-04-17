@@ -28,9 +28,11 @@ namespace CollegeWebsite.Models
         public int Credits { get; set; }
 
         [BsonElement("departmentId")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string? DepartmentId { get; set; }
 
         [BsonElement("facultyId")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string? FacultyId { get; set; }
 
         // Alias for FacultyId to support existing views
@@ -43,6 +45,7 @@ namespace CollegeWebsite.Models
         public int Capacity { get; set; } = 30;
 
         [BsonElement("enrolledStudents")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public List<string>? EnrolledStudentIds { get; set; } = new List<string>();
     }
 }

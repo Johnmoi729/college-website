@@ -1,0 +1,166 @@
+[
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715601"},
+      "facultyId": "FAC001",
+      "firstName": "Robert",
+      "lastName": "Johnson",
+      "email": "robert.johnson@itmcollege.edu",
+      "phone": "555-123-4567",
+      "position": "Professor",
+      "office": "CS Building, Room 101",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715501"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715701"},
+        {"$oid": "5f8d0d55b54764421b715702"}
+      ],
+      "joinDate": {"$date": "2015-08-15T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715602"},
+      "facultyId": "FAC002",
+      "firstName": "Emily",
+      "lastName": "Davis",
+      "email": "emily.davis@itmcollege.edu",
+      "phone": "555-234-5678",
+      "position": "Associate Professor",
+      "office": "CS Building, Room 102",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715501"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715703"}
+      ],
+      "joinDate": {"$date": "2017-01-10T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715603"},
+      "facultyId": "FAC003",
+      "firstName": "Michael",
+      "lastName": "Wilson",
+      "email": "michael.wilson@itmcollege.edu",
+      "phone": "555-345-6789",
+      "position": "Assistant Professor",
+      "office": "CS Building, Room 103",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715501"},
+      "courses": [],
+      "joinDate": {"$date": "2018-07-20T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715604"},
+      "facultyId": "FAC004",
+      "firstName": "Sarah",
+      "lastName": "Brown",
+      "email": "sarah.brown@itmcollege.edu",
+      "phone": "555-456-7890",
+      "position": "Professor",
+      "office": "Math Building, Room 201",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715502"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715704"}
+      ],
+      "joinDate": {"$date": "2014-05-12T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715605"},
+      "facultyId": "FAC005",
+      "firstName": "David",
+      "lastName": "Martinez",
+      "email": "david.martinez@itmcollege.edu",
+      "phone": "555-567-8901",
+      "position": "Associate Professor",
+      "office": "Math Building, Room 202",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715502"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715705"}
+      ],
+      "joinDate": {"$date": "2016-09-01T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715606"},
+      "facultyId": "FAC006",
+      "firstName": "Jennifer",
+      "lastName": "Thompson",
+      "email": "jennifer.thompson@itmcollege.edu",
+      "phone": "555-678-9012",
+      "position": "Professor",
+      "office": "Literature Building, Room 301",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715503"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715706"}
+      ],
+      "joinDate": {"$date": "2013-08-15T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715607"},
+      "facultyId": "FAC007",
+      "firstName": "James",
+      "lastName": "Anderson",
+      "email": "james.anderson@itmcollege.edu",
+      "phone": "555-789-0123",
+      "position": "Assistant Professor",
+      "office": "Literature Building, Room 302",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715503"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715707"}
+      ],
+      "joinDate": {"$date": "2019-01-15T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715608"},
+      "facultyId": "FAC008",
+      "firstName": "Lisa",
+      "lastName": "Taylor",
+      "email": "lisa.taylor@itmcollege.edu",
+      "phone": "555-890-1234",
+      "position": "Professor",
+      "office": "Physics Building, Room 401",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715504"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715708"}
+      ],
+      "joinDate": {"$date": "2012-06-10T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715609"},
+      "facultyId": "FAC009",
+      "firstName": "Kevin",
+      "lastName": "Garcia",
+      "email": "kevin.garcia@itmcollege.edu",
+      "phone": "555-901-2345",
+      "position": "Associate Professor",
+      "office": "Physics Building, Room 402",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715504"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715709"}
+      ],
+      "joinDate": {"$date": "2015-09-01T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715610"},
+      "facultyId": "FAC010",
+      "firstName": "Michelle",
+      "lastName": "Rodriguez",
+      "email": "michelle.rodriguez@itmcollege.edu",
+      "phone": "555-012-3456",
+      "position": "Professor",
+      "office": "Chemistry Building, Room 501",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715505"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715710"}
+      ],
+      "joinDate": {"$date": "2014-08-15T00:00:00.000Z"}
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715611"},
+      "facultyId": "FAC011",
+      "firstName": "Thomas",
+      "lastName": "Wilson",
+      "email": "thomas.wilson@itmcollege.edu",
+      "phone": "555-123-4567",
+      "position": "Assistant Professor",
+      "office": "Chemistry Building, Room 502",
+      "departmentId": {"$oid": "5f8d0d55b54764421b715505"},
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715711"}
+      ],
+      "joinDate": {"$date": "2018-01-15T00:00:00.000Z"}
+    }
+  ]

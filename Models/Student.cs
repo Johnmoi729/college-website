@@ -25,7 +25,6 @@ namespace CollegeWebsite.Models
         [BsonElement("lastName")]
         public string LastName { get; set; } = null!;
 
-        // Enhance Student.cs by adding:
         [BsonElement("fatherName")]
         public string? FatherName { get; set; }
 
@@ -72,9 +71,11 @@ namespace CollegeWebsite.Models
         public DateTime EnrollmentDate { get; set; } = DateTime.Now;
 
         [BsonElement("departmentId")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string? DepartmentId { get; set; }
 
         [BsonElement("enrolledCourseIds")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public List<string>? EnrolledCourseIds { get; set; } = new List<string>();
     }
 }

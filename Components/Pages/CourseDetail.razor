@@ -30,7 +30,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h2>@course.Name</h2>
-                <button class="btn btn-primary" @onclick='() => NavigationManager.NavigateTo("/courses")'>Back to Courses</button>
+                <button class="btn btn-primary" @onclick="NavigateBackToCourses">Back to Courses</button>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -171,5 +171,11 @@
 
         int enrolledCount = course.EnrolledStudentIds?.Count ?? 0;
         return (int)Math.Min(100, Math.Round((double)enrolledCount / course.Capacity * 100));
+    }
+
+    // Add this method to the @code block
+    private void NavigateBackToCourses()
+    {
+        NavigationManager.NavigateTo("/courses");
     }
 }

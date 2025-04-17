@@ -1,0 +1,82 @@
+[
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715901"},
+      "name": "John Smith",
+      "email": "john.smith@example.com",
+      "subject": "Excellent Teaching",
+      "message": "I wanted to express my gratitude for the excellent teaching in the Computer Science department. The professors are knowledgeable and approachable.",
+      "rating": 5,
+      "submissionDate": {"$date": "2023-10-15T14:30:00.000Z"},
+      "isResolved": true
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715902"},
+      "name": "Emma Johnson",
+      "email": "emma.johnson@example.com",
+      "subject": "Library Hours Suggestion",
+      "message": "I would like to suggest extending the library hours during exam periods. Many students would benefit from having additional study time in the library.",
+      "rating": 4,
+      "submissionDate": {"$date": "2023-10-18T10:15:00.000Z"},
+      "isResolved": false
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715903"},
+      "name": "Michael Davis",
+      "email": "michael.davis@example.com",
+      "subject": "Course Registration Issue",
+      "message": "I encountered an issue while trying to register for Physics 201. The system shows the course as full, but the professor mentioned there are still spots available.",
+      "rating": 3,
+      "submissionDate": {"$date": "2023-10-20T16:45:00.000Z"},
+      "isResolved": true
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715904"},
+      "name": "Olivia Wilson",
+      "email": "olivia.wilson@example.com",
+      "subject": "Campus Facilities",
+      "message": "The new science lab facilities are excellent and have greatly enhanced our learning experience. Thank you for the investment in quality equipment.",
+      "rating": 5,
+      "submissionDate": {"$date": "2023-10-25T09:20:00.000Z"},
+      "isResolved": true
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715905"},
+      "name": "William Anderson",
+      "email": "william.anderson@example.com",
+      "subject": "Website Suggestion",
+      "message": "It would be helpful to have a calendar feature on the website that shows all upcoming events, deadlines, and important dates in one place.",
+      "rating": 4,
+      "submissionDate": {"$date": "2023-10-30T11:05:00.000Z"},
+      "isResolved": false
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715906"},
+      "name": "Sophia Garcia",
+      "email": "sophia.garcia@example.com",
+      "subject": "Cafeteria Food",
+      "message": "I would like to provide feedback about the cafeteria food options. It would be great to have more vegetarian and vegan options available.",
+      "rating": 3,
+      "submissionDate": {"$date": "2023-11-02T13:40:00.000Z"},
+      "isResolved": false
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715907"},
+      "name": "Benjamin Martinez",
+      "email": "benjamin.martinez@example.com",
+      "subject": "Online Learning Resources",
+      "message": "The online learning resources for the English Literature courses are exceptional. The digital library and accessibility to research materials have been invaluable.",
+      "rating": 5,
+      "submissionDate": {"$date": "2023-11-05T15:25:00.000Z"},
+      "isResolved": true
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715908"},
+      "name": "Ava Taylor",
+      "email": "ava.taylor@example.com",
+      "subject": "Parking Issues",
+      "message": "There seems to be a shortage of parking spaces near the Literature building, especially during morning classes. Could additional parking options be considered?",
+      "rating": 2,
+      "submissionDate": {"$date": "2023-11-08T08:50:00.000Z"},
+      "isResolved": false
+    }
+  ]

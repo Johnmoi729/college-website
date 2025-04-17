@@ -33,7 +33,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h2>@department.Name</h2>
-                <button class="btn btn-primary" @onclick='() => NavigationManager.NavigateTo("/departments")'>Back to Departments</button>
+                <button class="btn btn-primary" @onclick="NavigateBackToDepartments">Back to Departments</button>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -216,5 +216,10 @@
         {
             loading = false;
         }
+    }
+    // Add this method to the @code block
+    private void NavigateBackToDepartments()
+    {
+        NavigationManager.NavigateTo("/departments");
     }
 }

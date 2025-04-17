@@ -22,16 +22,16 @@ namespace CollegeWebsite.Models
         [BsonElement("description")]
         public string? Description { get; set; }
 
-        // This was likely "headOfDepartment" in database but you had "headOfDepartmentId" in code
         [BsonElement("headOfDepartmentId")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string? HeadOfDepartmentId { get; set; }
 
-        // This was "faculty" in database but you had "FacultyIds" in code without proper mapping
         [BsonElement("faculty")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public List<string>? FacultyIds { get; set; } = new List<string>();
 
-        // This was "courses" in database but you had "CourseIds" in code without proper mapping
         [BsonElement("courses")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public List<string>? CourseIds { get; set; } = new List<string>();
     }
 }

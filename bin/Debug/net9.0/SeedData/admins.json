@@ -1,0 +1,22 @@
+[
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715401"},
+      "username": "admin",
+      "password": "10000.OLwssXNVPUuNW/aukl7ydA==.j9p+wKalsNLkKaKAzA9LB2y3dqX6wF0LzjIJMzWAE2o=",
+      "email": "admin@itmcollege.edu",
+      "fullName": "System Administrator",
+      "role": "Admin",
+      "lastLogin": {"$date": "2023-11-10T08:30:00.000Z"},
+      "isActive": true
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715402"},
+      "username": "registrar",
+      "password": "10000.aB34SkLmzCQWERwY/UYTmw==.WDxXzNl8WgJ0LRORpMY9mJjJmtxLnLl0qqV15pk/3wQ=",
+      "email": "registrar@itmcollege.edu",
+      "fullName": "Academic Registrar",
+      "role": "Registrar",
+      "lastLogin": {"$date": "2023-11-09T14:45:00.000Z"},
+      "isActive": true
+    }
+  ]

@@ -1,0 +1,167 @@
+[
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715701"},
+      "courseCode": "CS101",
+      "name": "Introduction to Computer Science",
+      "description": "An overview of computer science principles, programming fundamentals, and problem-solving techniques.",
+      "credits": 3,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715501"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715601"},
+      "schedule": "Monday, Wednesday, Friday 10:00 AM - 11:15 AM",
+      "capacity": 30,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715801"},
+        {"$oid": "5f8d0d55b54764421b715802"},
+        {"$oid": "5f8d0d55b54764421b715803"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715702"},
+      "courseCode": "CS201",
+      "name": "Data Structures and Algorithms",
+      "description": "Study of fundamental data structures and algorithms for solving computational problems.",
+      "credits": 4,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715501"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715601"},
+      "schedule": "Tuesday, Thursday 1:00 PM - 2:45 PM",
+      "capacity": 25,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715801"},
+        {"$oid": "5f8d0d55b54764421b715805"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715703"},
+      "courseCode": "CS301",
+      "name": "Database Systems",
+      "description": "Introduction to database design, implementation, and management with emphasis on relational database systems.",
+      "credits": 3,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715501"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715602"},
+      "schedule": "Monday, Wednesday 3:00 PM - 4:15 PM",
+      "capacity": 25,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715801"},
+        {"$oid": "5f8d0d55b54764421b715802"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715704"},
+      "courseCode": "MATH101",
+      "name": "Calculus I",
+      "description": "Introduction to differential and integral calculus of functions of one variable.",
+      "credits": 4,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715502"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715604"},
+      "schedule": "Monday, Wednesday, Friday 9:00 AM - 10:15 AM",
+      "capacity": 35,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715801"},
+        {"$oid": "5f8d0d55b54764421b715803"},
+        {"$oid": "5f8d0d55b54764421b715804"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715705"},
+      "courseCode": "MATH201",
+      "name": "Linear Algebra",
+      "description": "Study of vector spaces, linear transformations, matrices, and systems of linear equations.",
+      "credits": 3,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715502"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715605"},
+      "schedule": "Tuesday, Thursday 11:00 AM - 12:15 PM",
+      "capacity": 30,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715805"},
+        {"$oid": "5f8d0d55b54764421b715806"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715706"},
+      "courseCode": "ENG101",
+      "name": "Introduction to Literature",
+      "description": "Exploration of various literary genres and critical approaches to literature.",
+      "credits": 3,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715503"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715606"},
+      "schedule": "Monday, Wednesday, Friday 11:30 AM - 12:20 PM",
+      "capacity": 30,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715807"},
+        {"$oid": "5f8d0d55b54764421b715808"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715707"},
+      "courseCode": "ENG201",
+      "name": "Creative Writing",
+      "description": "Workshop-based course focusing on the elements of fiction, poetry, and creative non-fiction.",
+      "credits": 3,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715503"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715607"},
+      "schedule": "Tuesday, Thursday 2:00 PM - 3:15 PM",
+      "capacity": 20,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715807"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715708"},
+      "courseCode": "PHYS101",
+      "name": "General Physics I",
+      "description": "Introduction to mechanics, waves, and thermodynamics with calculus-based approach.",
+      "credits": 4,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715504"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715608"},
+      "schedule": "Monday, Wednesday, Friday 1:00 PM - 2:15 PM",
+      "capacity": 30,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715803"},
+        {"$oid": "5f8d0d55b54764421b715804"},
+        {"$oid": "5f8d0d55b54764421b715805"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715709"},
+      "courseCode": "PHYS201",
+      "name": "Modern Physics",
+      "description": "Introduction to relativity, quantum mechanics, and atomic and nuclear physics.",
+      "credits": 3,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715504"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715609"},
+      "schedule": "Tuesday, Thursday 9:30 AM - 10:45 AM",
+      "capacity": 25,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715805"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715710"},
+      "courseCode": "CHEM101",
+      "name": "General Chemistry I",
+      "description": "Introduction to fundamental principles of chemistry including atomic structure, chemical bonding, and stoichiometry.",
+      "credits": 4,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715505"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715610"},
+      "schedule": "Monday, Wednesday, Friday 8:00 AM - 9:15 AM",
+      "capacity": 30,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715809"},
+        {"$oid": "5f8d0d55b54764421b715810"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715711"},
+      "courseCode": "CHEM201",
+      "name": "Organic Chemistry I",
+      "description": "Introduction to structure, properties, and reactions of organic compounds.",
+      "credits": 4,
+      "departmentId": {"$oid": "5f8d0d55b54764421b715505"},
+      "facultyId": {"$oid": "5f8d0d55b54764421b715611"},
+      "schedule": "Tuesday, Thursday 11:00 AM - 12:45 PM",
+      "capacity": 25,
+      "enrolledStudents": [
+        {"$oid": "5f8d0d55b54764421b715809"}
+      ]
+    }
+  ]

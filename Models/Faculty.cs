@@ -13,6 +13,7 @@ namespace CollegeWebsite.Models
 
         [Required(ErrorMessage = "Faculty ID is required")]
         [BsonElement("facultyId")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string FacultyId { get; set; } = null!;
 
         [Required(ErrorMessage = "First name is required")]
@@ -43,9 +44,11 @@ namespace CollegeWebsite.Models
         public string? Office { get; set; }
 
         [BsonElement("departmentId")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string? DepartmentId { get; set; }
 
         [BsonElement("courses")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public List<string>? CourseIds { get; set; } = new List<string>();
 
         [BsonElement("joinDate")]

@@ -25,30 +25,54 @@ namespace CollegeWebsite.Services
 
         public async Task<bool> LoginAsync(string username, string password)
         {
-            _httpContextAccessor.HttpContext?.Session.Clear();
-            var isAuthenticated = await _adminService.AuthenticateAsync(username, password);
-            if (isAuthenticated)
+            try
             {
-                var admin = await _adminService.GetByUsernameAsync(username);
-                if (admin != null)
+                // Clear previous session data
+                _httpContextAccessor.HttpContext?.Session.Clear();
+
+                // Debug output
+                Console.WriteLine($"Authenticating user: {username}");
+
+                // Attempt authentication
+                var isAuthenticated = await _adminService.AuthenticateAsync(username, password);
+                Console.WriteLine($"Authentication result: {isAuthenticated}");
+
+                if (isAuthenticated)
                 {
-                    // Store user in session
-                    var sessionAdmin = new { admin.Id, admin.Username, admin.FullName, admin.Role };
-                    _httpContextAccessor.HttpContext?.Session.SetString(SessionKey, JsonSerializer.Serialize(sessionAdmin));
-                    _httpContextAccessor.HttpContext?.Response.Cookies.Append(
-                    "X-Session-Id",
-                    Guid.NewGuid().ToString(),
-                    new CookieOptions
+                    var admin = await _adminService.GetByUsernameAsync(username);
+                    if (admin != null)
                     {
-                        HttpOnly = true,
-                        Secure = true,
-                        SameSite = SameSiteMode.Strict,
-                        MaxAge = TimeSpan.FromMinutes(30)
-                    });
-                    return true;
+                        // Store user in session
+                        var sessionAdmin = new { admin.Id, admin.Username, admin.FullName, admin.Role };
+                        var sessionJson = System.Text.Json.JsonSerializer.Serialize(sessionAdmin);
+                        _httpContextAccessor.HttpContext?.Session.SetString(SessionKey, sessionJson);
+
+                        // Add a session cookie
+                        if (_httpContextAccessor.HttpContext != null)
+                        {
+                            _httpContextAccessor.HttpContext.Response.Cookies.Append(
+                                "X-Session-Id",
+                                Guid.NewGuid().ToString(),
+                                new CookieOptions
+                                {
+                                    HttpOnly = true,
+                                    Secure = true,
+                                    SameSite = SameSiteMode.Strict,
+                                    MaxAge = TimeSpan.FromMinutes(30)
+                                });
+                        }
+
+                        Console.WriteLine("Session stored successfully");
+                        return true;
+                    }
                 }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Login error: {ex.Message}");
+                return false;
+            }
         }
 
         public void Logout()

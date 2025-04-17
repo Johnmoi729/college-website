@@ -1,0 +1,79 @@
+[
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715501"},
+      "departmentCode": "CS",
+      "name": "Computer Science",
+      "description": "The Computer Science department focuses on computational theory, algorithms, and software development.",
+      "headOfDepartmentId": {"$oid": "5f8d0d55b54764421b715601"},
+      "faculty": [
+        {"$oid": "5f8d0d55b54764421b715601"},
+        {"$oid": "5f8d0d55b54764421b715602"},
+        {"$oid": "5f8d0d55b54764421b715603"}
+      ],
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715701"},
+        {"$oid": "5f8d0d55b54764421b715702"},
+        {"$oid": "5f8d0d55b54764421b715703"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715502"},
+      "departmentCode": "MATH",
+      "name": "Mathematics",
+      "description": "The Mathematics department provides comprehensive education in pure and applied mathematics.",
+      "headOfDepartmentId": {"$oid": "5f8d0d55b54764421b715604"},
+      "faculty": [
+        {"$oid": "5f8d0d55b54764421b715604"},
+        {"$oid": "5f8d0d55b54764421b715605"}
+      ],
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715704"},
+        {"$oid": "5f8d0d55b54764421b715705"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715503"},
+      "departmentCode": "ENG",
+      "name": "English Literature",
+      "description": "The English Literature department focuses on literary analysis, critical theory, and creative writing.",
+      "headOfDepartmentId": {"$oid": "5f8d0d55b54764421b715606"},
+      "faculty": [
+        {"$oid": "5f8d0d55b54764421b715606"},
+        {"$oid": "5f8d0d55b54764421b715607"}
+      ],
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715706"},
+        {"$oid": "5f8d0d55b54764421b715707"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715504"},
+      "departmentCode": "PHYS",
+      "name": "Physics",
+      "description": "The Physics department explores the fundamental principles governing the natural world.",
+      "headOfDepartmentId": {"$oid": "5f8d0d55b54764421b715608"},
+      "faculty": [
+        {"$oid": "5f8d0d55b54764421b715608"},
+        {"$oid": "5f8d0d55b54764421b715609"}
+      ],
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715708"},
+        {"$oid": "5f8d0d55b54764421b715709"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715505"},
+      "departmentCode": "CHEM",
+      "name": "Chemistry",
+      "description": "The Chemistry department offers courses in organic, inorganic, and physical chemistry.",
+      "headOfDepartmentId": {"$oid": "5f8d0d55b54764421b715610"},
+      "faculty": [
+        {"$oid": "5f8d0d55b54764421b715610"},
+        {"$oid": "5f8d0d55b54764421b715611"}
+      ],
+      "courses": [
+        {"$oid": "5f8d0d55b54764421b715710"},
+        {"$oid": "5f8d0d55b54764421b715711"}
+      ]
+    }
+  ]

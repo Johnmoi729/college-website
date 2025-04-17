@@ -96,3 +96,9 @@ E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\D
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\3melyx7kpt-c5paw8hrva.gz
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\0xs3f1rkg4-l79pmzltw3.gz
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\sj44zhevah-l79pmzltw3.gz
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\SeedData\admins.json
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\SeedData\courses.json
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\SeedData\departments.json
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\SeedData\faculty.json
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\SeedData\feedback.json
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\SeedData\students.json

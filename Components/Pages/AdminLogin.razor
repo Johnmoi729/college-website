@@ -46,7 +46,8 @@
 </div>
 
 @code {
-    private class LoginModel
+    // Change from private nested class to public class
+    public class LoginModel
     {
         [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; } = string.Empty;
@@ -58,14 +59,31 @@
     private LoginModel loginModel = new LoginModel();
     private bool showErrorMessage = false;
 
+    // Add this lifecycle method to ensure the model is fresh on page load
+    protected override void OnInitialized()
+    {
+        loginModel = new LoginModel();
+        showErrorMessage = false;
+    }
+
     private async Task HandleValidSubmit()
     {
+        // Add debug output to see what's being submitted
+        Console.WriteLine($"Attempting login with: {loginModel.Username}");
+
+        // First check if we're getting empty strings despite user input
+        if (string.IsNullOrWhiteSpace(loginModel.Username) || string.IsNullOrWhiteSpace(loginModel.Password))
+        {
+            showErrorMessage = true;
+            return;
+        }
+
         var isAuthenticated = await AuthService.LoginAsync(loginModel.Username, loginModel.Password);
 
         if (isAuthenticated)
         {
             // Redirect to admin dashboard
-            NavigationManager.NavigateTo("/admin/dashboard");
+            NavigationManager.NavigateTo("/admin/dashboard", true); // Force reload
         }
         else
         {

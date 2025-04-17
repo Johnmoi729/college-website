@@ -10,8 +10,9 @@
 <div class="row mb-4">
     <div class="col">
         <div class="input-group">
+            <!-- And update the input element: -->
             <input type="text" class="form-control" placeholder="Search departments..." @bind="searchTerm"
-                @bind:event="oninput" />
+                @onkeypress="OnSearchKeyPress" />
             <button class="btn btn-outline-primary" type="button" @onclick="FilterDepartments">Search</button>
         </div>
     </div>
@@ -74,6 +75,15 @@ else
             (d.DepartmentCode != null && d.DepartmentCode.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)) ||
             (d.Description != null && d.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
             .ToList();
+        }
+    }
+
+    // Add this event handler to filter when Enter key is pressed
+    private void OnSearchKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            FilterDepartments();
         }
     }
 }

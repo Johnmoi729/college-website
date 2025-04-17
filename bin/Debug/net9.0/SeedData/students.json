@@ -1,0 +1,418 @@
+[
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715801"},
+      "studentId": "STU001",
+      "firstName": "John",
+      "lastName": "Smith",
+      "fatherName": "Robert Smith",
+      "motherName": "Mary Smith",
+      "dateOfBirth": {"$date": "2000-05-15T00:00:00.000Z"},
+      "gender": "Male",
+      "residentialAddress": "123 College Avenue, Academic City, AC 12345",
+      "permanentAddress": "123 College Avenue, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "City High School",
+          "enrollmentNumber": "CHS123456",
+          "center": "Main Campus",
+          "stream": "Science",
+          "field": "Computer Science",
+          "marksSecured": 540,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Basketball team captain",
+      "admissionStatus": "Accepted",
+      "email": "john.smith@example.com",
+      "phone": "555-123-4567",
+      "address": "123 College Avenue, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-15T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715501"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715701"},
+        {"$oid": "5f8d0d55b54764421b715702"},
+        {"$oid": "5f8d0d55b54764421b715703"},
+        {"$oid": "5f8d0d55b54764421b715704"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715802"},
+      "studentId": "STU002",
+      "firstName": "Emma",
+      "lastName": "Johnson",
+      "fatherName": "Michael Johnson",
+      "motherName": "Sarah Johnson",
+      "dateOfBirth": {"$date": "2001-02-20T00:00:00.000Z"},
+      "gender": "Female",
+      "residentialAddress": "456 University Street, Academic City, AC 12345",
+      "permanentAddress": "456 University Street, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Metro High School",
+          "enrollmentNumber": "MHS789012",
+          "center": "Downtown Campus",
+          "stream": "Science",
+          "field": "Computer Science",
+          "marksSecured": 520,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Swimming team",
+      "admissionStatus": "Accepted",
+      "email": "emma.johnson@example.com",
+      "phone": "555-234-5678",
+      "address": "456 University Street, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-16T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715501"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715701"},
+        {"$oid": "5f8d0d55b54764421b715703"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715803"},
+      "studentId": "STU003",
+      "firstName": "Michael",
+      "lastName": "Davis",
+      "fatherName": "James Davis",
+      "motherName": "Jennifer Davis",
+      "dateOfBirth": {"$date": "2000-11-10T00:00:00.000Z"},
+      "gender": "Male",
+      "residentialAddress": "789 Education Road, Academic City, AC 12345",
+      "permanentAddress": "789 Education Road, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Valley High School",
+          "enrollmentNumber": "VHS345678",
+          "center": "East Campus",
+          "stream": "Science",
+          "field": "Physics",
+          "marksSecured": 530,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Track and Field",
+      "admissionStatus": "Accepted",
+      "email": "michael.davis@example.com",
+      "phone": "555-345-6789",
+      "address": "789 Education Road, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-17T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715504"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715701"},
+        {"$oid": "5f8d0d55b54764421b715704"},
+        {"$oid": "5f8d0d55b54764421b715708"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715804"},
+      "studentId": "STU004",
+      "firstName": "Olivia",
+      "lastName": "Wilson",
+      "fatherName": "David Wilson",
+      "motherName": "Emily Wilson",
+      "dateOfBirth": {"$date": "2001-07-05T00:00:00.000Z"},
+      "gender": "Female",
+      "residentialAddress": "101 Scholar Drive, Academic City, AC 12345",
+      "permanentAddress": "101 Scholar Drive, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Central High School",
+          "enrollmentNumber": "CHS567890",
+          "center": "Main Campus",
+          "stream": "Science",
+          "field": "Mathematics",
+          "marksSecured": 550,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Chess Club",
+      "admissionStatus": "Accepted",
+      "email": "olivia.wilson@example.com",
+      "phone": "555-456-7890",
+      "address": "101 Scholar Drive, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-18T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715502"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715704"},
+        {"$oid": "5f8d0d55b54764421b715708"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715805"},
+      "studentId": "STU005",
+      "firstName": "William",
+      "lastName": "Anderson",
+      "fatherName": "Thomas Anderson",
+      "motherName": "Linda Anderson",
+      "dateOfBirth": {"$date": "2000-09-25T00:00:00.000Z"},
+      "gender": "Male",
+      "residentialAddress": "202 Knowledge Lane, Academic City, AC 12345",
+      "permanentAddress": "202 Knowledge Lane, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Tech High School",
+          "enrollmentNumber": "THS123789",
+          "center": "North Campus",
+          "stream": "Science",
+          "field": "Physics",
+          "marksSecured": 535,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Soccer team",
+      "admissionStatus": "Accepted",
+      "email": "william.anderson@example.com",
+      "phone": "555-567-8901",
+      "address": "202 Knowledge Lane, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-19T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715504"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715702"},
+        {"$oid": "5f8d0d55b54764421b715705"},
+        {"$oid": "5f8d0d55b54764421b715708"},
+        {"$oid": "5f8d0d55b54764421b715709"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715806"},
+      "studentId": "STU006",
+      "firstName": "Sophia",
+      "lastName": "Garcia",
+      "fatherName": "Carlos Garcia",
+      "motherName": "Isabella Garcia",
+      "dateOfBirth": {"$date": "2001-04-15T00:00:00.000Z"},
+      "gender": "Female",
+      "residentialAddress": "303 Learning Circle, Academic City, AC 12345",
+      "permanentAddress": "303 Learning Circle, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "International High School",
+          "enrollmentNumber": "IHS456123",
+          "center": "West Campus",
+          "stream": "Science",
+          "field": "Mathematics",
+          "marksSecured": 525,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Volleyball team",
+      "admissionStatus": "Accepted",
+      "email": "sophia.garcia@example.com",
+      "phone": "555-678-9012",
+      "address": "303 Learning Circle, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-20T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715502"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715705"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715807"},
+      "studentId": "STU007",
+      "firstName": "Benjamin",
+      "lastName": "Martinez",
+      "fatherName": "Luis Martinez",
+      "motherName": "Maria Martinez",
+      "dateOfBirth": {"$date": "2000-12-05T00:00:00.000Z"},
+      "gender": "Male",
+      "residentialAddress": "404 Academic Boulevard, Academic City, AC 12345",
+      "permanentAddress": "404 Academic Boulevard, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Arts High School",
+          "enrollmentNumber": "AHS789456",
+          "center": "South Campus",
+          "stream": "Arts",
+          "field": "Literature",
+          "marksSecured": 540,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Debate Club",
+      "admissionStatus": "Accepted",
+      "email": "benjamin.martinez@example.com",
+      "phone": "555-789-0123",
+      "address": "404 Academic Boulevard, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-21T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715503"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715706"},
+        {"$oid": "5f8d0d55b54764421b715707"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715808"},
+      "studentId": "STU008",
+      "firstName": "Ava",
+      "lastName": "Taylor",
+      "fatherName": "William Taylor",
+      "motherName": "Emma Taylor",
+      "dateOfBirth": {"$date": "2001-01-30T00:00:00.000Z"},
+      "gender": "Female",
+      "residentialAddress": "505 Research Drive, Academic City, AC 12345",
+      "permanentAddress": "505 Research Drive, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Heritage High School",
+          "enrollmentNumber": "HHS234567",
+          "center": "East Campus",
+          "stream": "Arts",
+          "field": "Literature",
+          "marksSecured": 530,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Drama Club",
+      "admissionStatus": "Accepted",
+      "email": "ava.taylor@example.com",
+      "phone": "555-890-1234",
+      "address": "505 Research Drive, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-22T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715503"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715706"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715809"},
+      "studentId": "STU009",
+      "firstName": "Ethan",
+      "lastName": "Lee",
+      "fatherName": "Daniel Lee",
+      "motherName": "Sophia Lee",
+      "dateOfBirth": {"$date": "2000-10-15T00:00:00.000Z"},
+      "gender": "Male",
+      "residentialAddress": "606 Science Parkway, Academic City, AC 12345",
+      "permanentAddress": "606 Science Parkway, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Science Academy",
+          "enrollmentNumber": "SA567890",
+          "center": "Main Campus",
+          "stream": "Science",
+          "field": "Chemistry",
+          "marksSecured": 545,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Robotics Club",
+      "admissionStatus": "Accepted",
+      "email": "ethan.lee@example.com",
+      "phone": "555-901-2345",
+      "address": "606 Science Parkway, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-23T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715505"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715710"},
+        {"$oid": "5f8d0d55b54764421b715711"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715810"},
+      "studentId": "STU010",
+      "firstName": "Charlotte",
+      "lastName": "Nguyen",
+      "fatherName": "John Nguyen",
+      "motherName": "Linda Nguyen",
+      "dateOfBirth": {"$date": "2001-06-20T00:00:00.000Z"},
+      "gender": "Female",
+      "residentialAddress": "707 Discovery Way, Academic City, AC 12345",
+      "permanentAddress": "707 Discovery Way, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Pioneer Academy",
+          "enrollmentNumber": "PA678901",
+          "center": "North Campus",
+          "stream": "Science",
+          "field": "Chemistry",
+          "marksSecured": 535,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Science Olympiad",
+      "admissionStatus": "Accepted",
+      "email": "charlotte.nguyen@example.com",
+      "phone": "555-012-3456",
+      "address": "707 Discovery Way, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-08-24T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715505"},
+      "enrolledCourseIds": [
+        {"$oid": "5f8d0d55b54764421b715710"}
+      ]
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715811"},
+      "studentId": "STU011",
+      "firstName": "Rachel",
+      "lastName": "Collins",
+      "fatherName": "Brian Collins",
+      "motherName": "Karen Collins",
+      "dateOfBirth": {"$date": "2000-07-28T00:00:00.000Z"},
+      "gender": "Female",
+      "residentialAddress": "808 Student Avenue, Academic City, AC 12345",
+      "permanentAddress": "808 Student Avenue, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Westfield High School",
+          "enrollmentNumber": "WHS102938",
+          "center": "Main Campus",
+          "stream": "Science",
+          "field": "Computer Science",
+          "marksSecured": 520,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Programming Club",
+      "admissionStatus": "Pending",
+      "email": "rachel.collins@example.com",
+      "phone": "555-123-7890",
+      "address": "808 Student Avenue, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-10-05T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715501"},
+      "enrolledCourseIds": []
+    },
+    {
+      "_id": {"$oid": "5f8d0d55b54764421b715812"},
+      "studentId": "STU012",
+      "firstName": "Alexander",
+      "lastName": "Parker",
+      "fatherName": "Mark Parker",
+      "motherName": "Julia Parker",
+      "dateOfBirth": {"$date": "2001-03-14T00:00:00.000Z"},
+      "gender": "Male",
+      "residentialAddress": "909 Campus Circle, Academic City, AC 12345",
+      "permanentAddress": "909 Campus Circle, Academic City, AC 12345",
+      "previousEducation": [
+        {
+          "university": "Northern High School",
+          "enrollmentNumber": "NHS293847",
+          "center": "East Campus",
+          "stream": "Science",
+          "field": "Physics",
+          "marksSecured": 510,
+          "outOf": 600,
+          "classObtained": "First Class"
+        }
+      ],
+      "sportsDetails": "Chess Team",
+      "admissionStatus": "Pending",
+      "email": "alexander.parker@example.com",
+      "phone": "555-234-8901",
+      "address": "909 Campus Circle, Academic City, AC 12345",
+      "enrollmentDate": {"$date": "2023-10-10T00:00:00.000Z"},
+      "departmentId": {"$oid": "5f8d0d55b54764421b715504"},
+      "enrolledCourseIds": []
+    }
+  ]
