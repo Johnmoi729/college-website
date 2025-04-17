@@ -61,6 +61,14 @@ BsonClassMap.RegisterClassMap<Faculty>(cm =>
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+// Add explicit SignalR configuration
+builder.Services.AddSignalR(options =>
+{
+    options.MaximumReceiveMessageSize = 1024 * 1024; // 1MB
+    options.EnableDetailedErrors = true;
+});
+
+
 // Configure MongoDB
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("MongoDB"));
 
@@ -86,6 +94,14 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 {
     var settings = sp.GetRequiredService<DatabaseSettings>();
     return new MongoClient(settings.ConnectionString);
+});
+
+// Important: Add specific Blazor Server configuration
+builder.Services.AddServerSideBlazor(options =>
+{
+    options.DetailedErrors = true;
+    options.DisconnectedCircuitMaxRetained = 100;
+    options.DisconnectedCircuitRetentionPeriod = TimeSpan.FromMinutes(3);
 });
 
 // Add these service registrations
@@ -227,6 +243,66 @@ app.MapGet("/direct-login", async context =>
         </body>
         </html>
     ");
+});
+
+// Simple static test endpoint that doesn't use Blazor
+app.MapGet("/static-test", (HttpContext context) =>
+{
+    string html = "<html>" +
+                  "<head>" +
+                  "    <title>Static Test</title>" +
+                  "</head>" +
+                  "<body>" +
+                  "    <h1>Static Page Test</h1>" +
+                  "    <p>This is a non-Blazor static page to test basic server functionality.</p>" +
+                  "    <p>Current time: " + DateTime.Now.ToString() + "</p>" +
+                  "    <p><a href='/'>Return to home</a></p>" +
+                  "</body>" +
+                  "</html>";
+
+    return context.Response.WriteAsync(html);
+});
+
+// Test if the Blazor framework file is accessible
+app.MapGet("/framework-test", (HttpContext context) =>
+{
+    string html = "<html>" +
+                  "<head>" +
+                  "    <title>Framework Test</title>" +
+                  "</head>" +
+                  "<body>" +
+                  "    <h1>Testing Blazor JavaScript Framework</h1>" +
+                  "    <p>This page checks if the Blazor framework script is accessible:</p>" +
+                  "    <div id='result'>Checking...</div>" +
+                  "    " +
+                  "    <script>" +
+                  "        document.addEventListener('DOMContentLoaded', function() {" +
+                  "            try {" +
+                  "                fetch('_framework/blazor.web.js')" +
+                  "                    .then(response => {" +
+                  "                        if (response.ok) {" +
+                  "                            document.getElementById('result').innerHTML = " +
+                  "                                '<span style=\"color:green\">SUCCESS: blazor.web.js is accessible!</span>';" +
+                  "                        } else {" +
+                  "                            document.getElementById('result').innerHTML = " +
+                  "                                '<span style=\"color:red\">ERROR: blazor.web.js returned ' + " +
+                  "                                response.status + ' ' + response.statusText + '</span>';" +
+                  "                        }" +
+                  "                    })" +
+                  "                    .catch(error => {" +
+                  "                        document.getElementById('result').innerHTML = " +
+                  "                            '<span style=\"color:red\">ERROR: ' + error.message + '</span>';" +
+                  "                    });" +
+                  "            } catch (error) {" +
+                  "                document.getElementById('result').innerHTML = " +
+                  "                    '<span style=\"color:red\">ERROR: ' + error.message + '</span>';" +
+                  "            }" +
+                  "        });" +
+                  "    </script>" +
+                  "</body>" +
+                  "</html>";
+
+    return context.Response.WriteAsync(html);
 });
 
 app.Run();

@@ -1,0 +1,87 @@
+@page "/blazor-diagnostics"
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+<h1>Blazor Diagnostics</h1>
+
+<div class="card p-4 m-4">
+    <h2>Component Rendering Test</h2>
+    <p>Initial render complete: ✓</p>
+    <p>Component state change test: <span id="counter-value">@counter</span></p>
+    <button class="btn btn-primary" @onclick="IncrementCounter">Increment Counter</button>
+
+    <h2 class="mt-4">JavaScript Interop Test</h2>
+    <p>JS Interop Test Status: <span id="js-test-result">@jsInteropResult</span></p>
+    <button class="btn btn-info" @onclick="TestJsInterop">Test JavaScript Interop</button>
+
+    <h2 class="mt-4">SignalR Connection Test</h2>
+    <p>Connection ID: <span id="connection-id">@connectionId</span></p>
+    <button class="btn btn-success" @onclick="CheckSignalRConnection">Check Connection</button>
+
+    <div class="alert alert-info mt-4">
+        <strong>Console Output:</strong> Check your browser console (F12) for detailed diagnostic messages.
+    </div>
+</div>
+
+@code {
+    private int counter = 0;
+    private string jsInteropResult = "Not tested";
+    private string connectionId = "Unknown";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                await JSRuntime.InvokeVoidAsync("console.log", "BlazorDiagnostics: Component initialized");
+
+                // Try simple JS interop
+                await JSRuntime.InvokeVoidAsync("eval", "console.log('JS Interop from OnAfterRenderAsync works!')");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in OnAfterRenderAsync: {ex.Message}");
+            }
+        }
+    }
+
+    private void IncrementCounter()
+    {
+        counter++;
+        Console.WriteLine($"Counter incremented to {counter}");
+    }
+
+    private async Task TestJsInterop()
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("console.log", "Testing JS Interop from button click");
+
+            // Try to execute some simple JavaScript
+            await JSRuntime.InvokeVoidAsync("eval", "document.title = 'JS Interop Works: ' + new Date().toISOString()");
+
+            jsInteropResult = "Success: " + DateTime.Now.ToString();
+        }
+        catch (Exception ex)
+        {
+            jsInteropResult = $"Error: {ex.Message}";
+            Console.WriteLine($"JS Interop error: {ex.Message}");
+        }
+    }
+
+    private async Task CheckSignalRConnection()
+    {
+        try
+        {
+            // Try to get the SignalR connection ID using JS
+            connectionId = await JSRuntime.InvokeAsync<string>("eval",
+            "window._blazor && window._blazor._internal ? 'Connected' : 'Not connected'");
+        }
+        catch (Exception ex)
+        {
+            connectionId = $"Error: {ex.Message}";
+            Console.WriteLine($"Connection check error: {ex.Message}");
+        }
+    }
+}

@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\images\\college-logo.svg"
     },
     {
+      "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\js\\blazor-debug.js",
+      "PackagePath": "staticwebassets\\js\\blazor-debug.js"
+    },
+    {
       "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

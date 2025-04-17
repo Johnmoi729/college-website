@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.4" />
     <PackageReference Include="MongoDB.Driver" Version="3.3.0" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="9.0.0-dev-02302" />
   </ItemGroup>
