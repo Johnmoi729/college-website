@@ -13,28 +13,28 @@
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2900"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022aNPcLFwdCCGS2v1guSR64Htd4Ly5uclT7taAptnMPbs=\u0022"},{"Name":"Last-Modified","Value":"Tue, 08 Apr 2025 08:28:14 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CollegeWebsite/CollegeWebsite.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\CollegeWebsite.qoy941lnqb.bundle.scp.css'))</AssetFile>
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\CollegeWebsite.l79pmzltw3.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2k8SXq/QeOMVZ6TeqiQqYFdzGw4Z7U08Fo7qSn5IrL8="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5975"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222k8SXq/QeOMVZ6TeqiQqYFdzGw4Z7U08Fo7qSn5IrL8=\u0022"},{"Name":"Last-Modified","Value":"Thu, 10 Apr 2025 11:33:18 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"11905"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:42:50 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/CollegeWebsite/CollegeWebsite.qoy941lnqb.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\CollegeWebsite.qoy941lnqb.bundle.scp.css'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/CollegeWebsite/CollegeWebsite.l79pmzltw3.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\CollegeWebsite.l79pmzltw3.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qoy941lnqb"},{"Name":"integrity","Value":"sha256-2k8SXq/QeOMVZ6TeqiQqYFdzGw4Z7U08Fo7qSn5IrL8="},{"Name":"label","Value":"_content/CollegeWebsite/CollegeWebsite.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5975"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222k8SXq/QeOMVZ6TeqiQqYFdzGw4Z7U08Fo7qSn5IrL8=\u0022"},{"Name":"Last-Modified","Value":"Thu, 10 Apr 2025 11:33:18 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"l79pmzltw3"},{"Name":"integrity","Value":"sha256-HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k="},{"Name":"label","Value":"_content/CollegeWebsite/CollegeWebsite.bundle.scp.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"11905"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:42:50 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/CollegeWebsite/css/CollegeStyles.5mg1kht8af.css">
+    <StaticWebAssetEndpoint Include="_content/CollegeWebsite/css/CollegeStyles.42wev24wtg.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\CollegeStyles.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5mg1kht8af"},{"Name":"integrity","Value":"sha256-XVIjO/iz8\u002BUTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ="},{"Name":"label","Value":"_content/CollegeWebsite/css/CollegeStyles.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2141"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022XVIjO/iz8\u002BUTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ=\u0022"},{"Name":"Last-Modified","Value":"Wed, 16 Apr 2025 23:20:59 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"42wev24wtg"},{"Name":"integrity","Value":"sha256-zKALtZ2VrQFOjXCdsxbrtMRwbbPzixJL2Uq1BEF8kiw="},{"Name":"label","Value":"_content/CollegeWebsite/css/CollegeStyles.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4039"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022zKALtZ2VrQFOjXCdsxbrtMRwbbPzixJL2Uq1BEF8kiw=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:39:46 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CollegeWebsite/css/CollegeStyles.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\CollegeStyles.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-XVIjO/iz8\u002BUTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2141"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022XVIjO/iz8\u002BUTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ=\u0022"},{"Name":"Last-Modified","Value":"Wed, 16 Apr 2025 23:20:59 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-zKALtZ2VrQFOjXCdsxbrtMRwbbPzixJL2Uq1BEF8kiw="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4039"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022zKALtZ2VrQFOjXCdsxbrtMRwbbPzixJL2Uq1BEF8kiw=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:39:46 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CollegeWebsite/css/PageTransition.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\PageTransition.css'))</AssetFile>
@@ -59,6 +59,30 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1148"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u00224mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=\u0022"},{"Name":"Last-Modified","Value":"Tue, 08 Apr 2025 08:28:14 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CollegeWebsite/images/college-logo.cpppsw2bt4.svg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\college-logo.svg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"cpppsw2bt4"},{"Name":"integrity","Value":"sha256-oLUD7mO8RIfhW9bYq8\u002BuUZD/bPitHk/wUEOzIesa64c="},{"Name":"label","Value":"_content/CollegeWebsite/images/college-logo.svg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"987"},{"Name":"Content-Type","Value":"image/svg\u002Bxml"},{"Name":"ETag","Value":"\u0022oLUD7mO8RIfhW9bYq8\u002BuUZD/bPitHk/wUEOzIesa64c=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:40:41 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CollegeWebsite/images/college-logo.svg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\college-logo.svg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-oLUD7mO8RIfhW9bYq8\u002BuUZD/bPitHk/wUEOzIesa64c="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"987"},{"Name":"Content-Type","Value":"image/svg\u002Bxml"},{"Name":"ETag","Value":"\u0022oLUD7mO8RIfhW9bYq8\u002BuUZD/bPitHk/wUEOzIesa64c=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:40:41 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CollegeWebsite/js/site.c5paw8hrva.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"c5paw8hrva"},{"Name":"integrity","Value":"sha256-MFLHyrOEjivntVwMtiLkvDDFyoiML8E7BeOBf3M086Y="},{"Name":"label","Value":"_content/CollegeWebsite/js/site.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2532"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022MFLHyrOEjivntVwMtiLkvDDFyoiML8E7BeOBf3M086Y=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:38:27 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CollegeWebsite/js/site.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-MFLHyrOEjivntVwMtiLkvDDFyoiML8E7BeOBf3M086Y="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2532"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022MFLHyrOEjivntVwMtiLkvDDFyoiML8E7BeOBf3M086Y=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:38:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CollegeWebsite/lib/bootstrap/dist/css/bootstrap-grid.bqjiyaj88i.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-grid.css'))</AssetFile>

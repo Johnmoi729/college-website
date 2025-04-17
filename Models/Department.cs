@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CollegeWebsite.Models
 {
+    [BsonIgnoreExtraElements]
     public class Department
     {
         [BsonId]
@@ -21,12 +22,15 @@ namespace CollegeWebsite.Models
         [BsonElement("description")]
         public string? Description { get; set; }
 
-        [BsonElement("headOfDepartment")]
+        // This was likely "headOfDepartment" in database but you had "headOfDepartmentId" in code
+        [BsonElement("headOfDepartmentId")]
         public string? HeadOfDepartmentId { get; set; }
 
+        // This was "faculty" in database but you had "FacultyIds" in code without proper mapping
         [BsonElement("faculty")]
         public List<string>? FacultyIds { get; set; } = new List<string>();
 
+        // This was "courses" in database but you had "CourseIds" in code without proper mapping
         [BsonElement("courses")]
         public List<string>? CourseIds { get; set; } = new List<string>();
     }

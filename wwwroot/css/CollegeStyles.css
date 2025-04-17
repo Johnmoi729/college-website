@@ -1,8 +1,155 @@
+/* College Website Custom Styles */
 
-/* Mobile-first responsive fixes */
+/* Global Styles */
+:root {
+    --primary-color: #1b6ec2;
+    --secondary-color: #3a0647;
+    --accent-color: #28a745;
+    --light-bg: #f8f9fa;
+    --dark-bg: #343a40;
+    --text-dark: #212529;
+    --text-light: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+}
+
+/* Header and Navigation */
+.navbar-brand img {
+    margin-right: 0.5rem;
+}
+
+.sidebar {
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 70%);
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 500;
+}
+
+/* Cards and Containers */
+.card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-weight: 500;
+}
+
+.jumbotron {
+    background-color: var(--light-bg);
+    border-radius: 0.3rem;
+    padding: 2rem;
+}
+
+/* Buttons and Form Elements */
+.btn {
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #1257a7;
+    border-color: #1257a7;
+}
+
+.btn-success {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(27, 110, 194, 0.25);
+}
+
+/* Tables */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.table th {
+    font-weight: 600;
+    background-color: var(--light-bg);
+}
+
+/* Modals */
+.modal-header {
+    background-color: var(--light-bg);
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-footer {
+    background-color: var(--light-bg);
+    border-top: 1px solid #dee2e6;
+}
+
+/* Utilities */
+.bg-gradient-primary {
+    background: linear-gradient(180deg, var(--primary-color) 0%, #1257a7 100%);
+}
+
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text-truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Home Page Specific */
+.achievement-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+}
+
+/* Page Transitions */
+.page-transition-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+/* Responsive Fixes */
 @media (max-width: 768px) {
     .jumbotron {
-        padding: 2rem 1rem !important;
+        padding: 2rem 1rem;
     }
     
     .card {
@@ -28,7 +175,6 @@
     }
 }
 
-/* Improved navigation menu for mobile */
 @media (max-width: 640.98px) {
     .nav-scrollable {
         height: auto;
@@ -44,29 +190,7 @@
     }
 }
 
-/* Consistent card heights in grid layouts */
-.row-cols-md-3 .card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.row-cols-md-3 .card .card-body {
-    flex: 1 0 auto;
-}
-
-/* Better forms on mobile */
-@media (max-width: 576px) {
-    .form-group {
-        margin-bottom: 1rem;
-    }
-    
-    .input-group {
-        margin-bottom: 1rem;
-    }
-}
-
-/* Add print-friendly styles */
+/* Print styles */
 @media print {
     .sidebar, .top-row, .nav-menu, .btn, footer {
         display: none !important;
@@ -91,35 +215,5 @@
         background-color: #f8f9fa !important;
         color: #000 !important;
         border-bottom: 1px solid #ddd;
-    }
-    
-    .table {
-        border-collapse: collapse;
-    }
-    
-    .table th, .table td {
-        border: 1px solid #ddd;
-    }
-    
-    .alert, .badge {
-        border: 1px solid #ddd;
-        background-color: transparent !important;
-        color: #000 !important;
-    }
-    
-    body {
-        font-size: 12pt;
-    }
-    
-    h1 {
-        font-size: 18pt;
-    }
-    
-    h2 {
-        font-size: 16pt;
-    }
-    
-    h3 {
-        font-size: 14pt;
     }
 }

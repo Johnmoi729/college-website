@@ -134,8 +134,9 @@
                     <h5 class="modal-title">@(currentFaculty?.Id == null ? "Add New Faculty" : "Edit Faculty")</h5>
                     <button type="button" class="btn-close" @onclick="CloseModal" aria-label="Close"></button>
                 </div>
+                <!-- This is just a portion of the Faculty.razor file that contains the EditForm -->
                 <div class="modal-body">
-                    <EditForm Model="@currentFaculty" OnValidSubmit="SaveFaculty">
+                    <EditForm Model="@currentFaculty" OnValidSubmit="SaveFaculty" FormName="facultyForm">
                         <DataAnnotationsValidator />
                         <ValidationSummary />
 

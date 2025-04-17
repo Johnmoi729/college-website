@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CollegeWebsite.Models
 {
+    [BsonIgnoreExtraElements]
     public class Faculty
     {
         [BsonId]
@@ -21,7 +22,7 @@ namespace CollegeWebsite.Models
         [Required(ErrorMessage = "Last name is required")]
         [BsonElement("lastName")]
         public string LastName { get; set; } = null!;
-        
+
         // Computed property for full name
         public string Name => $"{FirstName} {LastName}";
 
@@ -37,7 +38,7 @@ namespace CollegeWebsite.Models
 
         [BsonElement("position")]
         public string? Position { get; set; }
-        
+
         [BsonElement("office")]
         public string? Office { get; set; }
 

@@ -10,6 +10,7 @@ main[b-lm218nrz23] {
 
 .sidebar[b-lm218nrz23] {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .top-row[b-lm218nrz23] {
@@ -19,22 +20,42 @@ main[b-lm218nrz23] {
     height: 3.5rem;
     display: flex;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-    .top-row[b-lm218nrz23]  a, .top-row[b-lm218nrz23]  .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
-    }
+.top-row[b-lm218nrz23]  a, .top-row[b-lm218nrz23]  .btn-link {
+    white-space: nowrap;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #0366d6;
+    transition: all 0.2s ease;
+}
 
-    .top-row[b-lm218nrz23]  a:hover, .top-row[b-lm218nrz23]  .btn-link:hover {
-        text-decoration: underline;
-    }
+.top-row[b-lm218nrz23]  a:hover, .top-row[b-lm218nrz23]  .btn-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
 
-    .top-row[b-lm218nrz23]  a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
+.top-row[b-lm218nrz23]  a:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Page transition effects */
+.page-transition-enter-active[b-lm218nrz23] {
+    animation: fadeIn-b-lm218nrz23 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn-b-lm218nrz23 {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
     }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 @media (max-width: 640.98px) {
     .top-row[b-lm218nrz23] {
@@ -90,9 +111,9 @@ main[b-lm218nrz23] {
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss[b-lm218nrz23] {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
+#blazor-error-ui .dismiss[b-lm218nrz23] {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}

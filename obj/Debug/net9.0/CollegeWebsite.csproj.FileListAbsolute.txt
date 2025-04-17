@@ -68,8 +68,6 @@ E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\D
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\48pzdiypti-h1s4sie4z3.gz
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\rhb7yk7kxa-63fj8s7r0e.gz
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\yjr1n7k9yi-0j3bgjxly4.gz
-E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\0xs3f1rkg4-qoy941lnqb.gz
-E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\sj44zhevah-qoy941lnqb.gz
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\staticwebassets.build.json
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\staticwebassets.development.json
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -92,5 +90,9 @@ E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\D
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\Serilog.Formatting.Compact.dll
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\Serilog.Sinks.Async.dll
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\Serilog.Sinks.File.dll
-E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\kl8xvqhfsv-5mg1kht8af.gz
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\0mk0ctug0t-gbo5fzubv3.gz
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\kl8xvqhfsv-42wev24wtg.gz
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\q46zgvtt6w-cpppsw2bt4.gz
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\3melyx7kpt-c5paw8hrva.gz
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\0xs3f1rkg4-l79pmzltw3.gz
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\sj44zhevah-l79pmzltw3.gz

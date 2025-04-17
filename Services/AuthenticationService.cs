@@ -25,6 +25,7 @@ namespace CollegeWebsite.Services
 
         public async Task<bool> LoginAsync(string username, string password)
         {
+            _httpContextAccessor.HttpContext?.Session.Clear();
             var isAuthenticated = await _adminService.AuthenticateAsync(username, password);
             if (isAuthenticated)
             {
@@ -34,6 +35,16 @@ namespace CollegeWebsite.Services
                     // Store user in session
                     var sessionAdmin = new { admin.Id, admin.Username, admin.FullName, admin.Role };
                     _httpContextAccessor.HttpContext?.Session.SetString(SessionKey, JsonSerializer.Serialize(sessionAdmin));
+                    _httpContextAccessor.HttpContext?.Response.Cookies.Append(
+                    "X-Session-Id",
+                    Guid.NewGuid().ToString(),
+                    new CookieOptions
+                    {
+                        HttpOnly = true,
+                        Secure = true,
+                        SameSite = SameSiteMode.Strict,
+                        MaxAge = TimeSpan.FromMinutes(30)
+                    });
                     return true;
                 }
             }

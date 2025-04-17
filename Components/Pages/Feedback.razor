@@ -19,7 +19,7 @@
                     <p class="lead">We value your opinion! Please take a moment to share your thoughts about our
                         college, courses, or services.</p>
 
-                    <EditForm Model="@feedbackModel" OnValidSubmit="HandleSubmit">
+                    <EditForm Model="@feedbackModel" OnValidSubmit="HandleSubmit" FormName="feedbackForm">
                         <DataAnnotationsValidator />
                         <ValidationSummary />
 

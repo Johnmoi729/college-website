@@ -1,6 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Components.Web
+<!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="css/CollegeStyles.css" />
 
 <head>
     <meta charset="utf-8" />
@@ -9,9 +9,14 @@
     <meta name="keywords" content="college, education, courses, admissions, academics, faculty, students" />
     <meta name="author" content="ITM College" />
     <base href="/" />
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Application CSS -->
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/CollegeStyles.css" />
+    <link rel="stylesheet" href="css/PageTransition.css" />
     <link rel="stylesheet" href="CollegeWebsite.styles.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <HeadOutlet />
@@ -19,7 +24,15 @@
 
 <body>
     <Routes />
+
+    <!-- Essential Scripts -->
     <script src="_framework/blazor.web.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Site JavaScript -->
+    <script src="js/site.js"></script>
 </body>
 
 </html>

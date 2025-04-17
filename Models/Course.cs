@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CollegeWebsite.Models
 {
+    [BsonIgnoreExtraElements]
     public class Course
     {
         [BsonId]
@@ -31,7 +32,7 @@ namespace CollegeWebsite.Models
 
         [BsonElement("facultyId")]
         public string? FacultyId { get; set; }
-        
+
         // Alias for FacultyId to support existing views
         public string? InstructorId => FacultyId;
 

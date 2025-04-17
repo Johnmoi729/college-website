@@ -14,7 +14,7 @@
                 <h3 class="mb-0">Admin Login</h3>
             </div>
             <div class="card-body">
-                <EditForm Model="@loginModel" OnValidSubmit="HandleValidSubmit">
+                <EditForm Model="@loginModel" OnValidSubmit="HandleValidSubmit" FormName="adminLoginForm">
                     <DataAnnotationsValidator />
                     <ValidationSummary />
 

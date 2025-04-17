@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\CollegeWebsite.bundle.scp.css",
-      "PackagePath": "staticwebassets\\CollegeWebsite.qoy941lnqb.bundle.scp.css"
+      "PackagePath": "staticwebassets\\CollegeWebsite.l79pmzltw3.bundle.scp.css"
     },
     {
       "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\app.css",
@@ -19,6 +19,14 @@
     {
       "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\images\\college-logo.svg",
+      "PackagePath": "staticwebassets\\images\\college-logo.svg"
+    },
+    {
+      "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
       "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
