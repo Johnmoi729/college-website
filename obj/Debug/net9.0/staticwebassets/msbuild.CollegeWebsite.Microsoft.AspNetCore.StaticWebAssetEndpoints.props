@@ -16,13 +16,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\CollegeWebsite.l79pmzltw3.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"11905"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:42:50 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"11905"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 08:59:35 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CollegeWebsite/CollegeWebsite.l79pmzltw3.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\CollegeWebsite.l79pmzltw3.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"l79pmzltw3"},{"Name":"integrity","Value":"sha256-HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k="},{"Name":"label","Value":"_content/CollegeWebsite/CollegeWebsite.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"11905"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 01:42:50 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"11905"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022HzOA5P\u002BjKaKCz8NRPOJTlbvHvpiY0hsQ0nxkgJ8D25k=\u0022"},{"Name":"Last-Modified","Value":"Thu, 17 Apr 2025 08:59:35 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CollegeWebsite/css/CollegeStyles.42wev24wtg.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\CollegeStyles.css'))</AssetFile>

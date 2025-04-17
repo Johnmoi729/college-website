@@ -1,0 +1,176 @@
+@page "/direct-session-test"
+@inject IHttpContextAccessor HttpContextAccessor
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+<h1>Direct Session Test</h1>
+
+<div class="card p-4 m-4">
+    <div>
+        <p><strong>Current Session ID:</strong> @sessionId</p>
+        <p><strong>Admin Session:</strong> @(isAuthenticated ? "Present" : "Not found")</p>
+        <p><strong>Session Value:</strong> @sessionData</p>
+        <p><strong>Last Error:</strong> @lastError</p>
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-primary me-2" @onclick="HandleCreateSession">Create Direct Admin Session</button>
+        <button class="btn btn-success me-2" @onclick="HandleReadSession">Refresh</button>
+        <button class="btn btn-danger me-2" @onclick="HandleClearSession">Clear Session</button>
+        <button class="btn btn-warning" @onclick="HandleGoDashboard">Go To Dashboard</button>
+    </div>
+</div>
+
+@code {
+    private string sessionId = "Unknown";
+    private bool isAuthenticated = false;
+    private string sessionData = "None";
+    private string lastError = "None";
+
+    protected override void OnInitialized()
+    {
+        try
+        {
+            ReadSession();
+            Console.WriteLine("SessionTest: OnInitialized completed");
+        }
+        catch (Exception ex)
+        {
+            lastError = $"Error in OnInitialized: {ex.Message}";
+            Console.WriteLine(lastError);
+        }
+    }
+
+    private void ReadSession()
+    {
+        Console.WriteLine("Attempting to read session...");
+        var httpContext = HttpContextAccessor.HttpContext;
+        if (httpContext != null)
+        {
+            sessionId = httpContext.Session.Id;
+            Console.WriteLine($"Session ID: {sessionId}");
+            var adminData = httpContext.Session.GetString("CurrentAdmin");
+            isAuthenticated = !string.IsNullOrEmpty(adminData);
+            sessionData = adminData ?? "No admin data found";
+            Console.WriteLine($"Admin session present: {isAuthenticated}");
+        }
+        else
+        {
+            sessionId = "No HttpContext available";
+            Console.WriteLine("HttpContext is not available");
+        }
+    }
+
+    // Separate handlers with try/catch for better error reporting
+    private void HandleReadSession()
+    {
+        try
+        {
+            ReadSession();
+            lastError = "None";
+        }
+        catch (Exception ex)
+        {
+            lastError = $"Read error: {ex.Message}";
+            Console.WriteLine(lastError);
+        }
+    }
+
+    private async Task HandleCreateSession()
+    {
+        try
+        {
+            Console.WriteLine("Creating direct admin session...");
+            var httpContext = HttpContextAccessor.HttpContext;
+            if (httpContext != null)
+            {
+                // Create a simple admin session directly
+                var adminJson = @"{""Id"":""admin123"",""Username"":""admin"",""FullName"":""Direct Admin"",""Role"":""Admin""}";
+                httpContext.Session.SetString("CurrentAdmin", adminJson);
+                await httpContext.Session.CommitAsync();
+                Console.WriteLine("Session data written");
+
+                // Set a localStorage flag for additional reliability
+                try
+                {
+                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "adminAuthenticated", "true");
+                    Console.WriteLine("localStorage flag set");
+                }
+                catch (Exception jsEx)
+                {
+                    Console.WriteLine($"JS error: {jsEx.Message}");
+                }
+
+                // Refresh the data
+                ReadSession();
+                lastError = "None";
+                StateHasChanged();
+            }
+            else
+            {
+                lastError = "HttpContext is not available";
+                Console.WriteLine(lastError);
+            }
+        }
+        catch (Exception ex)
+        {
+            lastError = $"Create error: {ex.Message}";
+            Console.WriteLine(lastError);
+        }
+    }
+
+    private async Task HandleClearSession()
+    {
+        try
+        {
+            Console.WriteLine("Clearing session...");
+            var httpContext = HttpContextAccessor.HttpContext;
+            if (httpContext != null)
+            {
+                httpContext.Session.Clear();
+                await httpContext.Session.CommitAsync();
+                Console.WriteLine("Session cleared");
+
+                // Also clear localStorage
+                try
+                {
+                    await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "adminAuthenticated");
+                    Console.WriteLine("localStorage flag cleared");
+                }
+                catch (Exception jsEx)
+                {
+                    Console.WriteLine($"JS error: {jsEx.Message}");
+                }
+
+                // Refresh the data
+                ReadSession();
+                lastError = "None";
+                StateHasChanged();
+            }
+            else
+            {
+                lastError = "HttpContext is not available";
+                Console.WriteLine(lastError);
+            }
+        }
+        catch (Exception ex)
+        {
+            lastError = $"Clear error: {ex.Message}";
+            Console.WriteLine(lastError);
+        }
+    }
+
+    private void HandleGoDashboard()
+    {
+        try
+        {
+            Console.WriteLine("Navigating to dashboard...");
+            NavigationManager.NavigateTo("/admin/dashboard", true);
+        }
+        catch (Exception ex)
+        {
+            lastError = $"Navigation error: {ex.Message}";
+            Console.WriteLine(lastError);
+        }
+    }
+}

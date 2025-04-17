@@ -1,4 +1,5 @@
 using CollegeWebsite.Components;
+using CollegeWebsite.Components.Shared;
 using CollegeWebsite.Models;
 using CollegeWebsite.Services;
 using CollegeWebsite.Utilities;
@@ -87,21 +88,24 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
     return new MongoClient(settings.ConnectionString);
 });
 
-// Add memory cache (required for session)
+// Add these service registrations
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
-
-// Add session with proper configuration
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.IdleTimeout = TimeSpan.FromMinutes(60); // Longer timeout
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-    options.Cookie.SameSite = SameSiteMode.Strict;
-});
+    options.Cookie.Name = ".CollegeAdmin.Session"; // Custom name helps with debugging
 
-// Add HttpContextAccessor (needed for accessing session from services)
-builder.Services.AddHttpContextAccessor();
+    // These are the critical settings for session persistence
+    options.Cookie.SameSite = SameSiteMode.Lax;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.None; // Use 'Always' in production with HTTPS
+
+    // Make cookies work in development
+    options.Cookie.Path = "/";
+    options.Cookie.Domain = null;
+});
 
 // Register services
 builder.Services.AddScoped<IMongoDBService<Student>, StudentService>();
@@ -117,27 +121,112 @@ builder.Services.AddScoped<FacultyService>();
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<FeedbackService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<AdminAuthComponent>();
+// In your service registrations:
+builder.Services.AddServerSideBlazor(options =>
+{
+    // Increase timeout for Blazor circuit
+    options.DisconnectedCircuitMaxRetained = 100;
+    options.DisconnectedCircuitRetentionPeriod = TimeSpan.FromMinutes(3);
+    options.JSInteropDefaultCallTimeout = TimeSpan.FromMinutes(1);
+    options.DetailedErrors = true; // Show detailed errors in development
+});
+// Add this after other service registrations
+builder.Services.AddScoped<IAuthStateService, AuthStateService>();
+builder.Services.AddLogging(logging =>
+{
+    logging.ClearProviders();
+    logging.AddConsole();
+    logging.SetMinimumLevel(LogLevel.Debug); // Set to Debug for more verbose logs
+});
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
+    app.UseDeveloperExceptionPage();
+    // In development, you could disable HTTPS redirection
+    // Don't use HTTPS redirection here if you don't have SSL set up
 }
 else
 {
-    // Only run schema validation in development environment
-    // The schema validation would be done here, but let's implement it first
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+    app.UseHttpsRedirection(); // Only use in production with proper SSL
 }
 
-// Enable session
+// And in your middleware pipeline:
+app.UseStaticFiles();
+app.UseRouting();
+
+// Session must come before endpoints but after routing
 app.UseSession();
 
+// Must add Blazor Hub AFTER UseSession but BEFORE MapRazorComponents
+app.MapBlazorHub();
 app.UseAntiforgery();
 
-app.UseStaticFiles();
+// Map endpoints
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+// Create a default admin account if none exists
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var adminService = scope.ServiceProvider.GetRequiredService<AdminService>();
+        await adminService.EnsureAdminExistsAsync();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error during startup: {ex.Message}");
+    }
+}
+
+// Add this to test session and confirm it works
+app.MapGet("/session-test", async context =>
+{
+    // Set a test value in session
+    context.Session.SetString("TestValue", "Session is working! " + DateTime.Now);
+    await context.Session.CommitAsync();
+
+    // Read it back
+    var value = context.Session.GetString("TestValue");
+
+    // Return a response
+    await context.Response.WriteAsync($"Session test:<br>Value: {value}<br>Session ID: {context.Session.Id}");
+});
+
+// Add this directly in Program.cs after app is built:
+app.MapGet("/direct-login", async context =>
+{
+    // Set admin session directly
+    var adminJson = @"{""Id"":""admin123"",""Username"":""admin"",""FullName"":""API Admin"",""Role"":""Admin""}";
+    context.Session.SetString("CurrentAdmin", adminJson);
+    await context.Session.CommitAsync();
+
+    // Return HTML with links
+    await context.Response.WriteAsync(@"
+        <html>
+        <head>
+            <title>Direct Login</title>
+            <style>
+                body { font-family: Arial; margin: 20px; }
+                a { display: block; margin: 10px 0; padding: 10px; background: #007bff; color: white; text-decoration: none; }
+            </style>
+        </head>
+        <body>
+            <h1>Direct Login Complete</h1>
+            <p>Admin session created. Session ID: " + context.Session.Id + @"</p>
+            <a href='/admin/dashboard'>Go to Dashboard</a>
+            <a href='/direct-session-test'>Go to Session Test</a>
+            <a href='/button-test'>Go to Button Test</a>
+        </body>
+        </html>
+    ");
+});
 
 app.Run();

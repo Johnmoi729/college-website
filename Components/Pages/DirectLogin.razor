@@ -1,0 +1,75 @@
+@page "/quick-login"
+@inject IHttpContextAccessor HttpContextAccessor
+@inject NavigationManager NavigationManager
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Quick Admin Login</h3>
+                </div>
+                <div class="card-body">
+                    <p>This page creates an admin session directly and redirects you to the dashboard.</p>
+                    <p>Current session ID: @sessionId</p>
+                    <p>Admin session: @(hasAdminSession ? "Yes" : "No")</p>
+
+                    <div class="mt-4">
+                        <a href="#" @onclick="CreateSessionAndRedirect" @onclick:preventDefault
+                            class="btn btn-success btn-lg">
+                            Login and Go to Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string sessionId = "Unknown";
+    private bool hasAdminSession = false;
+
+    protected override void OnInitialized()
+    {
+        try
+        {
+            var httpContext = HttpContextAccessor.HttpContext;
+            if (httpContext != null)
+            {
+                sessionId = httpContext.Session.Id;
+                var adminData = httpContext.Session.GetString("CurrentAdmin");
+                hasAdminSession = !string.IsNullOrEmpty(adminData);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in OnInitialized: {ex.Message}");
+        }
+    }
+
+    private async Task CreateSessionAndRedirect()
+    {
+        try
+        {
+            var httpContext = HttpContextAccessor.HttpContext;
+            if (httpContext != null)
+            {
+                var adminJson = @"{""Id"":""admin123"",""Username"":""admin"",""FullName"":""Quick Admin"",""Role"":""Admin""}";
+                httpContext.Session.SetString("CurrentAdmin", adminJson);
+                await httpContext.Session.CommitAsync();
+                Console.WriteLine("Quick login: Admin session created");
+
+                // Create a form post to force a complete request (more reliable than NavigationManager)
+                await Task.Delay(500); // Short delay
+
+                // Use NavigationManager with forceLoad for full page reload
+                NavigationManager.NavigateTo("/admin/dashboard", true);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in quick login: {ex.Message}");
+        }
+    }
+}
