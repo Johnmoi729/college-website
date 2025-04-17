@@ -4,15 +4,13 @@ using CollegeWebsite.Models;
 using CollegeWebsite.Services;
 using CollegeWebsite.Utilities;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.Server;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
-using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,8 +37,6 @@ BsonClassMap.RegisterClassMap<Student>(cm =>
     cm.AutoMap();
     cm.SetIgnoreExtraElements(true);
     cm.MapMember(c => c.EnrolledCourseIds).SetElementName("enrolledCourseIds");
-    // If your database actually uses "courses" instead:
-    // cm.MapMember(c => c.EnrolledCourseIds).SetElementName("courses");
 });
 
 BsonClassMap.RegisterClassMap<Course>(cm =>
@@ -57,17 +53,22 @@ BsonClassMap.RegisterClassMap<Faculty>(cm =>
     cm.MapMember(c => c.CourseIds).SetElementName("courses");
 });
 
-// Add services to the container.
+// ** SIMPLIFIED AND CLEAR CONFIGURATION ** 
+// Server-side Blazor configuration
+builder.Services.AddServerSideBlazor(options =>
+{
+    options.DetailedErrors = true;
+    options.DisconnectedCircuitMaxRetained = 100;
+    options.DisconnectedCircuitRetentionPeriod = TimeSpan.FromMinutes(3);
+    options.JSInteropDefaultCallTimeout = TimeSpan.FromMinutes(1);
+});
+
+// Razor components with interactive server components
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// Add explicit SignalR configuration
-builder.Services.AddSignalR(options =>
-{
-    options.MaximumReceiveMessageSize = 1024 * 1024; // 1MB
-    options.EnableDetailedErrors = true;
-});
-
+// Register the error handler for Blazor components
+builder.Services.AddScoped<IErrorBoundaryLogger, ErrorHandler>();
 
 // Configure MongoDB
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("MongoDB"));
@@ -96,34 +97,24 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
     return new MongoClient(settings.ConnectionString);
 });
 
-// Important: Add specific Blazor Server configuration
-builder.Services.AddServerSideBlazor(options =>
-{
-    options.DetailedErrors = true;
-    options.DisconnectedCircuitMaxRetained = 100;
-    options.DisconnectedCircuitRetentionPeriod = TimeSpan.FromMinutes(3);
-});
-
-// Add these service registrations
+// Add HttpContext and Session
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(60); // Longer timeout
+    options.IdleTimeout = TimeSpan.FromMinutes(60);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
-    options.Cookie.Name = ".CollegeAdmin.Session"; // Custom name helps with debugging
+    options.Cookie.Name = ".CollegeAdmin.Session";
 
-    // These are the critical settings for session persistence
+    // Critical settings for session persistence
     options.Cookie.SameSite = SameSiteMode.Lax;
     options.Cookie.SecurePolicy = CookieSecurePolicy.None; // Use 'Always' in production with HTTPS
-
-    // Make cookies work in development
     options.Cookie.Path = "/";
     options.Cookie.Domain = null;
 });
 
-// Register services
+// Register our services
 builder.Services.AddScoped<IMongoDBService<Student>, StudentService>();
 builder.Services.AddScoped<IMongoDBService<Course>, CourseService>();
 builder.Services.AddScoped<IMongoDBService<Department>, DepartmentService>();
@@ -138,24 +129,20 @@ builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<FeedbackService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<AdminAuthComponent>();
-// In your service registrations:
-builder.Services.AddServerSideBlazor(options =>
-{
-    // Increase timeout for Blazor circuit
-    options.DisconnectedCircuitMaxRetained = 100;
-    options.DisconnectedCircuitRetentionPeriod = TimeSpan.FromMinutes(3);
-    options.JSInteropDefaultCallTimeout = TimeSpan.FromMinutes(1);
-    options.DetailedErrors = true; // Show detailed errors in development
-});
-// Add this after other service registrations
 builder.Services.AddScoped<IAuthStateService, AuthStateService>();
+
+// Enhanced logging
 builder.Services.AddLogging(logging =>
 {
     logging.ClearProviders();
     logging.AddConsole();
-    logging.SetMinimumLevel(LogLevel.Debug); // Set to Debug for more verbose logs
-});
+    logging.SetMinimumLevel(LogLevel.Debug);
 
+    // Add more detailed logging for Blazor
+    logging.AddFilter("Microsoft.AspNetCore.Components", LogLevel.Debug);
+    logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Debug);
+    logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
+});
 
 var app = builder.Build();
 
@@ -163,28 +150,35 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    // In development, you could disable HTTPS redirection
-    // Don't use HTTPS redirection here if you don't have SSL set up
 }
 else
 {
     app.UseExceptionHandler("/Error");
     app.UseHsts();
-    app.UseHttpsRedirection(); // Only use in production with proper SSL
+    app.UseHttpsRedirection();
 }
 
-// And in your middleware pipeline:
-app.UseStaticFiles();
+// ** CRITICAL FIX: Separate the Blazor framework static files from other middleware **
+// First, handle requests for Blazor framework files by special mapping
+app.Map("/_framework", app =>
+{
+    app.UseStaticFiles();
+});
+app.Map("/_blazor", app =>
+{
+    app.UseStaticFiles();
+});
+
+// Main application middleware pipeline
 app.UseRouting();
-
-// Session must come before endpoints but after routing
 app.UseSession();
-
-// Must add Blazor Hub AFTER UseSession but BEFORE MapRazorComponents
-app.MapBlazorHub();
+app.UseStaticFiles(); // This serves other static files
 app.UseAntiforgery();
 
-// Map endpoints
+// Map Blazor hub
+app.MapBlazorHub();
+
+// Map Razor components with the correct render mode
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
@@ -216,93 +210,61 @@ app.MapGet("/session-test", async context =>
     await context.Response.WriteAsync($"Session test:<br>Value: {value}<br>Session ID: {context.Session.Id}");
 });
 
-// Add this directly in Program.cs after app is built:
-app.MapGet("/direct-login", async context =>
+// Diagnostic endpoint for Blazor status
+app.MapGet("/blazor-status", async context =>
 {
-    // Set admin session directly
-    var adminJson = @"{""Id"":""admin123"",""Username"":""admin"",""FullName"":""API Admin"",""Role"":""Admin""}";
-    context.Session.SetString("CurrentAdmin", adminJson);
-    await context.Session.CommitAsync();
+    string html = @"
+    <html>
+    <head>
+        <title>Blazor Status</title>
+        <style>
+            body { font-family: Arial; margin: 20px; }
+            .success { color: green; }
+            .error { color: red; }
+        </style>
+    </head>
+    <body>
+        <h1>Blazor Status Check</h1>
+        <div id='status'>Checking Blazor status...</div>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var status = '';
+                
+                // Check for Blazor
+                if (window.Blazor) {
+                    status += '<p class=""success"">✓ Blazor is loaded</p>';
+                } else {
+                    status += '<p class=""error"">✗ Blazor is not loaded</p>';
+                }
+                
+                // Check for SignalR
+                if (window.signalR) {
+                    status += '<p class=""success"">✓ SignalR is loaded</p>';
+                } else {
+                    status += '<p class=""error"">✗ SignalR is not loaded</p>';
+                }
+                
+                // Test fetching the Blazor script directly
+                fetch('/_framework/blazor.server.js')
+                    .then(response => {
+                        if (response.ok) {
+                            status += '<p class=""success"">✓ blazor.server.js is accessible</p>';
+                        } else {
+                            status += '<p class=""error"">✗ blazor.server.js returned ' + response.status + '</p>';
+                        }
+                        document.getElementById('status').innerHTML = status;
+                    })
+                    .catch(error => {
+                        status += '<p class=""error"">✗ blazor.server.js error: ' + error.message + '</p>';
+                        document.getElementById('status').innerHTML = status;
+                    });
+            });
+        </script>
+    </body>
+    </html>";
 
-    // Return HTML with links
-    await context.Response.WriteAsync(@"
-        <html>
-        <head>
-            <title>Direct Login</title>
-            <style>
-                body { font-family: Arial; margin: 20px; }
-                a { display: block; margin: 10px 0; padding: 10px; background: #007bff; color: white; text-decoration: none; }
-            </style>
-        </head>
-        <body>
-            <h1>Direct Login Complete</h1>
-            <p>Admin session created. Session ID: " + context.Session.Id + @"</p>
-            <a href='/admin/dashboard'>Go to Dashboard</a>
-            <a href='/direct-session-test'>Go to Session Test</a>
-            <a href='/button-test'>Go to Button Test</a>
-        </body>
-        </html>
-    ");
-});
-
-// Simple static test endpoint that doesn't use Blazor
-app.MapGet("/static-test", (HttpContext context) =>
-{
-    string html = "<html>" +
-                  "<head>" +
-                  "    <title>Static Test</title>" +
-                  "</head>" +
-                  "<body>" +
-                  "    <h1>Static Page Test</h1>" +
-                  "    <p>This is a non-Blazor static page to test basic server functionality.</p>" +
-                  "    <p>Current time: " + DateTime.Now.ToString() + "</p>" +
-                  "    <p><a href='/'>Return to home</a></p>" +
-                  "</body>" +
-                  "</html>";
-
-    return context.Response.WriteAsync(html);
-});
-
-// Test if the Blazor framework file is accessible
-app.MapGet("/framework-test", (HttpContext context) =>
-{
-    string html = "<html>" +
-                  "<head>" +
-                  "    <title>Framework Test</title>" +
-                  "</head>" +
-                  "<body>" +
-                  "    <h1>Testing Blazor JavaScript Framework</h1>" +
-                  "    <p>This page checks if the Blazor framework script is accessible:</p>" +
-                  "    <div id='result'>Checking...</div>" +
-                  "    " +
-                  "    <script>" +
-                  "        document.addEventListener('DOMContentLoaded', function() {" +
-                  "            try {" +
-                  "                fetch('_framework/blazor.web.js')" +
-                  "                    .then(response => {" +
-                  "                        if (response.ok) {" +
-                  "                            document.getElementById('result').innerHTML = " +
-                  "                                '<span style=\"color:green\">SUCCESS: blazor.web.js is accessible!</span>';" +
-                  "                        } else {" +
-                  "                            document.getElementById('result').innerHTML = " +
-                  "                                '<span style=\"color:red\">ERROR: blazor.web.js returned ' + " +
-                  "                                response.status + ' ' + response.statusText + '</span>';" +
-                  "                        }" +
-                  "                    })" +
-                  "                    .catch(error => {" +
-                  "                        document.getElementById('result').innerHTML = " +
-                  "                            '<span style=\"color:red\">ERROR: ' + error.message + '</span>';" +
-                  "                    });" +
-                  "            } catch (error) {" +
-                  "                document.getElementById('result').innerHTML = " +
-                  "                    '<span style=\"color:red\">ERROR: ' + error.message + '</span>';" +
-                  "            }" +
-                  "        });" +
-                  "    </script>" +
-                  "</body>" +
-                  "</html>";
-
-    return context.Response.WriteAsync(html);
+    await context.Response.WriteAsync(html);
 });
 
 app.Run();

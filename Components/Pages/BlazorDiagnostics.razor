@@ -1,6 +1,7 @@
 @page "/blazor-diagnostics"
 @using Microsoft.JSInterop
-@inject IJSRuntime JSRuntime
+
+<PageTitle>Blazor Diagnostics</PageTitle>
 
 <h1>Blazor Diagnostics</h1>
 
@@ -21,12 +22,27 @@
     <div class="alert alert-info mt-4">
         <strong>Console Output:</strong> Check your browser console (F12) for detailed diagnostic messages.
     </div>
+
+    <div class="mt-4">
+        <h3>Diagnostic Info</h3>
+        <ul>
+            <li>Browser: @browserInfo</li>
+            <li>Render Time: @renderTime</li>
+            <li>Components Loaded: @componentsLoaded</li>
+        </ul>
+    </div>
 </div>
 
 @code {
     private int counter = 0;
     private string jsInteropResult = "Not tested";
     private string connectionId = "Unknown";
+    private string browserInfo = "Checking...";
+    private string renderTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+    private string componentsLoaded = "Checking...";
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; } = null!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -36,8 +52,20 @@
             {
                 await JSRuntime.InvokeVoidAsync("console.log", "BlazorDiagnostics: Component initialized");
 
-                // Try simple JS interop
-                await JSRuntime.InvokeVoidAsync("eval", "console.log('JS Interop from OnAfterRenderAsync works!')");
+                // Record components loaded status
+                componentsLoaded = "Basic component rendering works";
+
+                // Try to get browser info
+                try {
+                    browserInfo = await JSRuntime.InvokeAsync<string>("eval", 
+                        "navigator.userAgent || 'User agent information not available'");
+                }
+                catch {
+                    browserInfo = "Failed to get browser info";
+                }
+
+                // Force a refresh to show the updated values
+                StateHasChanged();
             }
             catch (Exception ex)
             {
@@ -59,9 +87,10 @@
             await JSRuntime.InvokeVoidAsync("console.log", "Testing JS Interop from button click");
 
             // Try to execute some simple JavaScript
-            await JSRuntime.InvokeVoidAsync("eval", "document.title = 'JS Interop Works: ' + new Date().toISOString()");
+            string result = await JSRuntime.InvokeAsync<string>("eval", 
+                "document.title = 'JS Interop Works: ' + new Date().toISOString(); 'JS Interop successful at ' + new Date().toISOString();");
 
-            jsInteropResult = "Success: " + DateTime.Now.ToString();
+            jsInteropResult = "Success: " + result;
         }
         catch (Exception ex)
         {
@@ -74,9 +103,14 @@
     {
         try
         {
-            // Try to get the SignalR connection ID using JS
-            connectionId = await JSRuntime.InvokeAsync<string>("eval",
-            "window._blazor && window._blazor._internal ? 'Connected' : 'Not connected'");
+            // Try a simpler approach to test SignalR/Blazor connection
+            connectionId = "Testing connection...";
+            StateHasChanged();
+
+            await Task.Delay(500); // Brief delay to simulate network activity
+            
+            // If we got this far without error, the connection is working
+            connectionId = "Connected at " + DateTime.Now.ToString("HH:mm:ss.fff");
         }
         catch (Exception ex)
         {

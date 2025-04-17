@@ -137,3 +137,5 @@ E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\D
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\CollegeWebsite.pdb
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\CollegeWebsite.genruntimeconfig.cache
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\ref\CollegeWebsite.dll
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\kaptaqp7xn-tq4wpao6lk.gz
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\30g4aea4ip-b33j3hk8a1.gz
