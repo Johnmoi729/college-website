@@ -3,6 +3,7 @@
 @using CollegeWebsite.Services
 @inject AdminService AdminService
 @inject NavigationManager NavigationManager
+@inject IAuthenticationService AuthService
 
 <PageTitle>Admin Login</PageTitle>
 
@@ -25,7 +26,8 @@
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <InputText id="password" type="password" @bind-Value="loginModel.Password" class="form-control" />
+                        <InputText id="password" type="password" @bind-Value="loginModel.Password"
+                            class="form-control" />
                         <ValidationMessage For="@(() => loginModel.Password)" />
                     </div>
 
@@ -58,8 +60,8 @@
 
     private async Task HandleValidSubmit()
     {
-        var isAuthenticated = await AdminService.AuthenticateAsync(loginModel.Username, loginModel.Password);
-        
+        var isAuthenticated = await AuthService.LoginAsync(loginModel.Username, loginModel.Password);
+
         if (isAuthenticated)
         {
             // Redirect to admin dashboard

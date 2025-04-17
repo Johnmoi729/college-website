@@ -85,3 +85,12 @@ E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\D
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\CollegeWebsite.pdb
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\CollegeWebsite.genruntimeconfig.cache
 E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\ref\CollegeWebsite.dll
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\CollegeWebsite.sourcelink.json
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\Serilog.dll
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\Serilog.Extensions.Logging.dll
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\Serilog.Extensions.Logging.File.dll
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\Serilog.Formatting.Compact.dll
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\Serilog.Sinks.Async.dll
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\bin\Debug\net9.0\Serilog.Sinks.File.dll
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\kl8xvqhfsv-5mg1kht8af.gz
+E:\P1\dotnet_vscode file collections\dotnet-college-website\CollegeWebsite\obj\Debug\net9.0\compressed\0mk0ctug0t-gbo5fzubv3.gz

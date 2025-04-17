@@ -1,0 +1,48 @@
+@using CollegeWebsite.Services
+@inject NavigationManager NavigationManager
+@inject IAuthenticationService AuthService
+
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Admin Dashboard</h5>
+    </div>
+    <div class="card-body p-0">
+        <div class="list-group list-group-flush">
+            <NavLink class="list-group-item list-group-item-action" href="/admin/dashboard" Match="NavLinkMatch.All">
+                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+            </NavLink>
+            <NavLink class="list-group-item list-group-item-action" href="/admin/students">
+                <i class="bi bi-people me-2"></i> Students
+            </NavLink>
+            <NavLink class="list-group-item list-group-item-action" href="/admin/courses">
+                <i class="bi bi-book me-2"></i> Courses
+            </NavLink>
+            <NavLink class="list-group-item list-group-item-action" href="/admin/departments">
+                <i class="bi bi-building me-2"></i> Departments
+            </NavLink>
+            <NavLink class="list-group-item list-group-item-action" href="/admin/faculty">
+                <i class="bi bi-person-badge me-2"></i> Faculty
+            </NavLink>
+            <NavLink class="list-group-item list-group-item-action" href="/admin/admissions">
+                <i class="bi bi-card-checklist me-2"></i> Admissions
+            </NavLink>
+            <NavLink class="list-group-item list-group-item-action" href="/admin/feedback">
+                <i class="bi bi-chat-dots me-2"></i> Feedback
+            </NavLink>
+            <NavLink class="list-group-item list-group-item-action" href="/admin/profile">
+                <i class="bi bi-person-circle me-2"></i> Profile
+            </NavLink>
+            <button class="list-group-item list-group-item-action text-danger" @onclick="Logout">
+                <i class="bi bi-box-arrow-right me-2"></i> Logout
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private void Logout()
+    {
+        AuthService.Logout();
+        NavigationManager.NavigateTo("/admin/login");
+    }
+}

@@ -112,7 +112,7 @@
                                     <p class="card-text"><strong>Email:</strong> @instructor.Email</p>
                                     <p class="card-text"><strong>Phone:</strong> @instructor.Phone</p>
                                     <p class="card-text"><strong>Office:</strong> @(instructor.Office ?? "Not assigned")</p>
-                                    <a href="/faculty" class="btn btn-outline-primary btn-sm">View Faculty Directory</a>
+                                    <a href="/faculty/@instructor.Id" class="btn btn-outline-primary btn-sm">View Faculty Profile</a>
                                 </div>
                             </div>
                         }

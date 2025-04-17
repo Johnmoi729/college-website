@@ -38,6 +38,24 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="fatherName" class="form-label">Father Name</label>
+                        <InputText id="fatherName" @bind-Value="student.FatherName" class="form-control" />
+                        <ValidationMessage For="@(() => student.FatherName)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="motherName" class="form-label">Mother Name</label>
+                        <InputText id="motherName" @bind-Value="student.MotherName" class="form-control" />
+                        <ValidationMessage For="@(() => student.MotherName)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                        <InputDate id="dateOfBirth" @bind-Value="student.DateOfBirth" class="form-control" />
+                        <ValidationMessage For="@(() => student.DateOfBirth)" />
+                    </div>
+
+                    <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <InputText id="email" @bind-Value="student.Email" class="form-control" />
                         <ValidationMessage For="@(() => student.Email)" />
@@ -115,13 +133,13 @@
 
             // Set enrollment date to current date
             student.EnrollmentDate = DateTime.Now;
-            
+
             // Create new student
             await StudentService.CreateAsync(student);
-            
+
             showSuccessMessage = true;
             showErrorMessage = false;
-            
+
             // Reset form
             student = new Student();
         }

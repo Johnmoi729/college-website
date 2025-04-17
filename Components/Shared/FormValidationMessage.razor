@@ -1,0 +1,18 @@
+@using Microsoft.AspNetCore.Components.Forms
+@using System.Linq.Expressions
+
+<div class="validation-message @(HasValidationErrors ? "d-block" : "d-none")">
+    <div class="alert alert-danger">
+        <ValidationMessage For="@For" />
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Expression<Func<object>> For { get; set; } = null!;
+
+    [CascadingParameter]
+    private EditContext CurrentEditContext { get; set; } = null!;
+
+    private bool HasValidationErrors => CurrentEditContext.GetValidationMessages(For).Any();
+}

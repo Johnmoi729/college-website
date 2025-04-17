@@ -1,0 +1,125 @@
+
+/* Mobile-first responsive fixes */
+@media (max-width: 768px) {
+    .jumbotron {
+        padding: 2rem 1rem !important;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .btn-group .btn {
+        margin-bottom: 0.5rem;
+        border-radius: 0.25rem !important;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+}
+
+/* Improved navigation menu for mobile */
+@media (max-width: 640.98px) {
+    .nav-scrollable {
+        height: auto;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+    
+    .navbar-brand {
+        max-width: 70%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* Consistent card heights in grid layouts */
+.row-cols-md-3 .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.row-cols-md-3 .card .card-body {
+    flex: 1 0 auto;
+}
+
+/* Better forms on mobile */
+@media (max-width: 576px) {
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .input-group {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Add print-friendly styles */
+@media print {
+    .sidebar, .top-row, .nav-menu, .btn, footer {
+        display: none !important;
+    }
+    
+    .page {
+        display: block;
+        width: 100%;
+    }
+    
+    main {
+        width: 100%;
+        display: block;
+    }
+    
+    .card {
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+    
+    .card-header {
+        background-color: #f8f9fa !important;
+        color: #000 !important;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .table {
+        border-collapse: collapse;
+    }
+    
+    .table th, .table td {
+        border: 1px solid #ddd;
+    }
+    
+    .alert, .badge {
+        border: 1px solid #ddd;
+        background-color: transparent !important;
+        color: #000 !important;
+    }
+    
+    body {
+        font-size: 12pt;
+    }
+    
+    h1 {
+        font-size: 18pt;
+    }
+    
+    h2 {
+        font-size: 16pt;
+    }
+    
+    h3 {
+        font-size: 14pt;
+    }
+}

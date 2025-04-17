@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wbarHMiz1AP7Lg7LxqVd1nLPfFoGVMPigGvxfuRWwic=",
+  "Hash": "jXh0DYrBtZ7lKm1tG4yLThBuAaz5wK5WUt6pBoC01dk=",
   "Source": "CollegeWebsite",
   "BasePath": "_content/CollegeWebsite",
   "Mode": "Default",
@@ -36,6 +36,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Identity": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\0mk0ctug0t-gbo5fzubv3.gz",
+      "SourceId": "CollegeWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/CollegeWebsite",
+      "RelativePath": "css/PageTransition#[.{fingerprint=gbo5fzubv3}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\PageTransition.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "gw8dqs8n37",
+      "Integrity": "UPgMpD1uYVhT/28AjuaHAzorbQubqiUbjYvWYfahdHM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\PageTransition.css"
     },
     {
       "Identity": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\0xs3f1rkg4-qoy941lnqb.gz",
@@ -626,6 +647,27 @@
       "OriginalItemSpec": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
+      "Identity": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\kl8xvqhfsv-5mg1kht8af.gz",
+      "SourceId": "CollegeWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/CollegeWebsite",
+      "RelativePath": "css/CollegeStyles#[.{fingerprint=5mg1kht8af}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\CollegeStyles.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "fmqxvjhwf1",
+      "Integrity": "B8CX/9NeSW8ZIALmBUSAbxCKhRNq7S6AnIbJYo4DhMU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\CollegeStyles.css"
+    },
+    {
       "Identity": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\kz48fzu6rp-jj8uyg4cgr.gz",
       "SourceId": "CollegeWebsite",
       "SourceType": "Discovered",
@@ -1065,6 +1107,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\app.css"
+    },
+    {
+      "Identity": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\CollegeStyles.css",
+      "SourceId": "CollegeWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\",
+      "BasePath": "_content/CollegeWebsite",
+      "RelativePath": "css/CollegeStyles#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5mg1kht8af",
+      "Integrity": "XVIjO/iz8+UTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\CollegeStyles.css"
+    },
+    {
+      "Identity": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\PageTransition.css",
+      "SourceId": "CollegeWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\",
+      "BasePath": "_content/CollegeWebsite",
+      "RelativePath": "css/PageTransition#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "gbo5fzubv3",
+      "Integrity": "XIXkHhAdBisDh03bZjFjkyHzA+t/roavR4XSB4uykck=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\PageTransition.css"
     },
     {
       "Identity": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\favicon.png",
@@ -2904,6 +2988,602 @@
         {
           "Name": "integrity",
           "Value": "sha256-gjtI8GmM9dzyZfCzIdW6lEtXm135Ibz5m3DGtP0LcGE="
+        }
+      ]
+    },
+    {
+      "Route": "css/CollegeStyles.5mg1kht8af.css",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\kl8xvqhfsv-5mg1kht8af.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001398601399"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "714"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B8CX/9NeSW8ZIALmBUSAbxCKhRNq7S6AnIbJYo4DhMU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:20:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"XVIjO/iz8+UTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5mg1kht8af"
+        },
+        {
+          "Name": "label",
+          "Value": "css/CollegeStyles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XVIjO/iz8+UTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/CollegeStyles.5mg1kht8af.css",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\CollegeStyles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2141"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XVIjO/iz8+UTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:20:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5mg1kht8af"
+        },
+        {
+          "Name": "label",
+          "Value": "css/CollegeStyles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XVIjO/iz8+UTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/CollegeStyles.5mg1kht8af.css.gz",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\kl8xvqhfsv-5mg1kht8af.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "714"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B8CX/9NeSW8ZIALmBUSAbxCKhRNq7S6AnIbJYo4DhMU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:20:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5mg1kht8af"
+        },
+        {
+          "Name": "label",
+          "Value": "css/CollegeStyles.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B8CX/9NeSW8ZIALmBUSAbxCKhRNq7S6AnIbJYo4DhMU="
+        }
+      ]
+    },
+    {
+      "Route": "css/CollegeStyles.css",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\kl8xvqhfsv-5mg1kht8af.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001398601399"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "714"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B8CX/9NeSW8ZIALmBUSAbxCKhRNq7S6AnIbJYo4DhMU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:20:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"XVIjO/iz8+UTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XVIjO/iz8+UTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/CollegeStyles.css",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\CollegeStyles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2141"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XVIjO/iz8+UTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:20:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XVIjO/iz8+UTfZ05iwqLAI0gL3AteRaSegOISvgV9PQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/CollegeStyles.css.gz",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\kl8xvqhfsv-5mg1kht8af.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "714"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B8CX/9NeSW8ZIALmBUSAbxCKhRNq7S6AnIbJYo4DhMU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:20:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-B8CX/9NeSW8ZIALmBUSAbxCKhRNq7S6AnIbJYo4DhMU="
+        }
+      ]
+    },
+    {
+      "Route": "css/PageTransition.css",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\0mk0ctug0t-gbo5fzubv3.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.006993006993"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "142"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UPgMpD1uYVhT/28AjuaHAzorbQubqiUbjYvWYfahdHM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:18:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"XIXkHhAdBisDh03bZjFjkyHzA+t/roavR4XSB4uykck=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XIXkHhAdBisDh03bZjFjkyHzA+t/roavR4XSB4uykck="
+        }
+      ]
+    },
+    {
+      "Route": "css/PageTransition.css",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\PageTransition.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "330"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XIXkHhAdBisDh03bZjFjkyHzA+t/roavR4XSB4uykck=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:18:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XIXkHhAdBisDh03bZjFjkyHzA+t/roavR4XSB4uykck="
+        }
+      ]
+    },
+    {
+      "Route": "css/PageTransition.css.gz",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\0mk0ctug0t-gbo5fzubv3.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "142"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UPgMpD1uYVhT/28AjuaHAzorbQubqiUbjYvWYfahdHM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:18:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UPgMpD1uYVhT/28AjuaHAzorbQubqiUbjYvWYfahdHM="
+        }
+      ]
+    },
+    {
+      "Route": "css/PageTransition.gbo5fzubv3.css",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\0mk0ctug0t-gbo5fzubv3.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.006993006993"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "142"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UPgMpD1uYVhT/28AjuaHAzorbQubqiUbjYvWYfahdHM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:18:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"XIXkHhAdBisDh03bZjFjkyHzA+t/roavR4XSB4uykck=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gbo5fzubv3"
+        },
+        {
+          "Name": "label",
+          "Value": "css/PageTransition.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XIXkHhAdBisDh03bZjFjkyHzA+t/roavR4XSB4uykck="
+        }
+      ]
+    },
+    {
+      "Route": "css/PageTransition.gbo5fzubv3.css",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\PageTransition.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "330"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XIXkHhAdBisDh03bZjFjkyHzA+t/roavR4XSB4uykck=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:18:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gbo5fzubv3"
+        },
+        {
+          "Name": "label",
+          "Value": "css/PageTransition.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XIXkHhAdBisDh03bZjFjkyHzA+t/roavR4XSB4uykck="
+        }
+      ]
+    },
+    {
+      "Route": "css/PageTransition.gbo5fzubv3.css.gz",
+      "AssetFile": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\obj\\Debug\\net9.0\\compressed\\0mk0ctug0t-gbo5fzubv3.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "142"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UPgMpD1uYVhT/28AjuaHAzorbQubqiUbjYvWYfahdHM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 23:18:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gbo5fzubv3"
+        },
+        {
+          "Name": "label",
+          "Value": "css/PageTransition.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UPgMpD1uYVhT/28AjuaHAzorbQubqiUbjYvWYfahdHM="
         }
       ]
     },

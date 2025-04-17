@@ -1,4 +1,5 @@
 using CollegeWebsite.Models;
+using CollegeWebsite.Utilities;
 using MongoDB.Driver;
 
 namespace CollegeWebsite.Services
@@ -15,10 +16,11 @@ namespace CollegeWebsite.Services
             return await FindAsync(a => a.Username == username).ContinueWith(t => t.Result.FirstOrDefault());
         }
 
+        // Update AdminService.cs to use passwordhasher ultilities:
         public async Task<bool> AuthenticateAsync(string username, string password)
         {
             var admin = await GetByUsernameAsync(username);
-            if (admin != null && admin.Password == password) // In a real app, use password hashing
+            if (admin != null && PasswordHasher.VerifyPassword(password, admin.Password))
             {
                 admin.LastLogin = DateTime.Now;
                 await UpdateAsync(admin.Id!, admin);

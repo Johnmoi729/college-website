@@ -47,6 +47,10 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.3.0, )"
+            },
+            "Serilog.Extensions.Logging.File": {
+              "target": "Package",
+              "version": "[9.0.0-dev-02302, )"
             }
           },
           "imports": [

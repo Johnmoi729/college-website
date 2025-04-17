@@ -1,0 +1,90 @@
+@page "/merit-list"
+@using CollegeWebsite.Models
+@using CollegeWebsite.Services
+@inject IMongoDBService<Student> StudentService
+@inject IMongoDBService<Department> DepartmentService
+
+<PageTitle>Merit List - College Website</PageTitle>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Merit List</h1>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Selected Candidates</h3>
+        </div>
+        <div class="card-body">
+            @if (isLoading)
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            }
+            else if (acceptedStudents == null || !acceptedStudents.Any())
+            {
+                <p>No students have been accepted yet.</p>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Application Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < acceptedStudents.Count; i++)
+                            {
+                                var student = acceptedStudents[i];
+                                var dept = departments.FirstOrDefault(d => d.Id == student.DepartmentId);
+                                <tr>
+                                    <td>@(i + 1)</td>
+                                    <td>@student.StudentId</td>
+                                    <td>@student.FirstName @student.LastName</td>
+                                    <td>@(dept?.Name ?? "Unknown Department")</td>
+                                    <td>@student.EnrollmentDate.ToShortDateString()</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<Student>? acceptedStudents;
+    private List<Department>? departments;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isLoading = true;
+        try
+        {
+            var allStudents = await StudentService.GetAllAsync();
+            departments = await DepartmentService.GetAllAsync();
+
+            acceptedStudents = allStudents
+            .Where(s => s.AdmissionStatus == "Accepted")
+            .OrderBy(s => s.StudentId) // Or use some merit criteria
+            .ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading merit list: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

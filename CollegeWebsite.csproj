@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="3.3.0" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="9.0.0-dev-02302" />
   </ItemGroup>
 
 </Project>

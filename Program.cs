@@ -1,6 +1,8 @@
 using CollegeWebsite.Components;
 using CollegeWebsite.Models;
 using CollegeWebsite.Services;
+using Microsoft.AspNetCore.Components.Web;
+using System.Linq.Expressions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,7 @@ builder.Services.AddRazorComponents()
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("MongoDB"));
 
 // Register MongoDB services
-builder.Services.AddSingleton<DatabaseSettings>(sp => 
+builder.Services.AddSingleton<DatabaseSettings>(sp =>
 {
     var settings = new DatabaseSettings
     {
@@ -28,6 +30,20 @@ builder.Services.AddSingleton<DatabaseSettings>(sp =>
     return settings;
 });
 
+// Add memory cache (required for session)
+builder.Services.AddDistributedMemoryCache();
+
+// Add session with proper configuration
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+// Add HttpContextAccessor (needed for accessing session from services)
+builder.Services.AddHttpContextAccessor();
+
 // Register services
 builder.Services.AddScoped<IMongoDBService<Student>, StudentService>();
 builder.Services.AddScoped<IMongoDBService<Course>, CourseService>();
@@ -41,6 +57,7 @@ builder.Services.AddScoped<DepartmentService>();
 builder.Services.AddScoped<FacultyService>();
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<FeedbackService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 var app = builder.Build();
 
@@ -50,6 +67,8 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
 }
 
+// Enable session
+app.UseSession();
 
 app.UseAntiforgery();
 

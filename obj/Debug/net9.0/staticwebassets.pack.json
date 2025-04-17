@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\app.css"
     },
     {
+      "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\CollegeStyles.css",
+      "PackagePath": "staticwebassets\\css\\CollegeStyles.css"
+    },
+    {
+      "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\css\\PageTransition.css",
+      "PackagePath": "staticwebassets\\css\\PageTransition.css"
+    },
+    {
       "Id": "E:\\P1\\dotnet_vscode file collections\\dotnet-college-website\\CollegeWebsite\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },

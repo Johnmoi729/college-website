@@ -1,0 +1,266 @@
+@page "/admin/feedback"
+@using CollegeWebsite.Models
+@using FeedbackModel = CollegeWebsite.Models.Feedback
+@using CollegeWebsite.Services
+@inject IMongoDBService<FeedbackModel> FeedbackService
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Feedback Management - Admin</PageTitle>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Feedback Management</h1>
+    
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="btn-group">
+                <button class="btn @(showResolved ? "btn-outline-success" : "btn-success")" @onclick="() => FilterFeedback(false)">
+                    Unresolved (@(allFeedback?.Count(f => !f.IsResolved) ?? 0))
+                </button>
+                <button class="btn @(showResolved ? "btn-success" : "btn-outline-success")" @onclick="() => FilterFeedback(true)">
+                    Resolved (@(allFeedback?.Count(f => f.IsResolved) ?? 0))
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search feedback..." @bind="searchTerm" @bind:event="oninput" />
+                <button class="btn btn-outline-primary" type="button" @onclick="ApplySearch">Search</button>
+            </div>
+        </div>
+    </div>
+    
+    @if (isLoading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (filteredFeedback == null || !filteredFeedback.Any())
+    {
+        <div class="alert alert-info">No feedback found.</div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Rating</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var feedback in filteredFeedback)
+                    {
+                        <tr>
+                            <td>@feedback.SubmissionDate.ToShortDateString()</td>
+                            <td>@feedback.Name</td>
+                            <td>@feedback.Subject</td>
+                            <td>
+                                @for (int i = 0; i < feedback.Rating; i++)
+                                {
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                }
+                                @for (int i = feedback.Rating; i < 5; i++)
+                                {
+                                    <i class="bi bi-star text-warning"></i>
+                                }
+                            </td>
+                            <td>
+                                @if (feedback.IsResolved)
+                                {
+                                    <span class="badge bg-success">Resolved</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning">Pending</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-info btn-sm" @onclick="() => ViewFeedback(feedback)">View</button>
+                                    @if (!feedback.IsResolved)
+                                    {
+                                        <button class="btn btn-success btn-sm" @onclick="() => MarkAsResolved(feedback.Id)">Mark Resolved</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-warning btn-sm" @onclick="() => MarkAsUnresolved(feedback.Id)">Mark Unresolved</button>
+                                    }
+                                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteFeedback(feedback.Id)">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@if (showFeedbackModal && selectedFeedback != null)
+{
+    <div class="modal fade show" style="display: block;" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Feedback Details</h5>
+                    <button type="button" class="btn-close" @onclick="CloseModal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Date:</strong> @selectedFeedback.SubmissionDate.ToString("yyyy-MM-dd HH:mm")</p>
+                    <p><strong>From:</strong> @selectedFeedback.Name (@selectedFeedback.Email)</p>
+                    <p><strong>Subject:</strong> @selectedFeedback.Subject</p>
+                    <p><strong>Rating:</strong> @selectedFeedback.Rating/5</p>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p>@selectedFeedback.Message</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+                    @if (!selectedFeedback.IsResolved)
+                    {
+                        <button type="button" class="btn btn-success" @onclick="() => MarkAsResolved(selectedFeedback.Id)">Mark as Resolved</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-warning" @onclick="() => MarkAsUnresolved(selectedFeedback.Id)">Mark as Unresolved</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code {
+    private List<FeedbackModel>? allFeedback;
+    private List<FeedbackModel>? filteredFeedback;
+    private bool isLoading = true;
+    private bool showResolved = false;
+    private string searchTerm = "";
+    private bool showFeedbackModal = false;
+    private FeedbackModel? selectedFeedback;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadFeedback();
+    }
+    
+    private async Task LoadFeedback()
+    {
+        isLoading = true;
+        try
+        {
+            allFeedback = await FeedbackService.GetAllAsync();
+            FilterFeedback(showResolved);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading feedback: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+    
+    private void FilterFeedback(bool resolved)
+    {
+        showResolved = resolved;
+        if (allFeedback == null) return;
+        
+        filteredFeedback = allFeedback
+            .Where(f => f.IsResolved == resolved)
+            .OrderByDescending(f => f.SubmissionDate)
+            .ToList();
+            
+        ApplySearch();
+    }
+    
+    private void ApplySearch()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm) || filteredFeedback == null) return;
+        
+        filteredFeedback = filteredFeedback
+            .Where(f => 
+                f.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                f.Email.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                f.Subject.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                f.Message.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
+    
+    private void ViewFeedback(FeedbackModel feedback)
+    {
+        selectedFeedback = feedback;
+        showFeedbackModal = true;
+    }
+    
+    private void CloseModal()
+    {
+        showFeedbackModal = false;
+    }
+    
+    private async Task MarkAsResolved(string id)
+    {
+        try
+        {
+            var feedback = await FeedbackService.GetByIdAsync(id);
+            if (feedback != null)
+            {
+                feedback.IsResolved = true;
+                await FeedbackService.UpdateAsync(id, feedback);
+                await LoadFeedback();
+                showFeedbackModal = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error marking feedback as resolved: {ex.Message}");
+        }
+    }
+    
+    private async Task MarkAsUnresolved(string id)
+    {
+        try
+        {
+            var feedback = await FeedbackService.GetByIdAsync(id);
+            if (feedback != null)
+            {
+                feedback.IsResolved = false;
+                await FeedbackService.UpdateAsync(id, feedback);
+                await LoadFeedback();
+                showFeedbackModal = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error marking feedback as unresolved: {ex.Message}");
+        }
+    }
+    
+    private async Task DeleteFeedback(string id)
+    {
+        if (await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this feedback?"))
+        {
+            try
+            {
+                await FeedbackService.RemoveAsync(id);
+                await LoadFeedback();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting feedback: {ex.Message}");
+            }
+        }
+    }
+}

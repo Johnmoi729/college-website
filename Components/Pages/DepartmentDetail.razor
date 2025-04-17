@@ -1,0 +1,220 @@
+@page "/departments/{Id}"
+@using CollegeWebsite.Models
+@using DepartmentModel = CollegeWebsite.Models.Department
+@using FacultyModel = CollegeWebsite.Models.Faculty
+@using CourseModel = CollegeWebsite.Models.Course
+@using CollegeWebsite.Services
+@inject DepartmentService DepartmentService
+@inject FacultyService FacultyService
+@inject CourseService CourseService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Department Details</PageTitle>
+
+<div class="container mt-4">
+    @if (loading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (department == null)
+    {
+        <div class="alert alert-warning">
+            <h4>Department Not Found</h4>
+            <p>The requested department could not be found.</p>
+            <button class="btn btn-primary" @onclick='() => NavigationManager.NavigateTo("/departments")'>Back to Departments</button>
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h2>@department.Name</h2>
+                <button class="btn btn-primary" @onclick='() => NavigationManager.NavigateTo("/departments")'>Back to Departments</button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 class="text-primary">Department Information</h4>
+                        <div class="mb-3">
+                            <strong>Department Code:</strong> @department.DepartmentCode
+                        </div>
+                        <div class="mb-3">
+                            <strong>Description:</strong>
+                            <p>@(department.Description ?? "No description available.")</p>
+                        </div>
+                        
+                        @if (!string.IsNullOrEmpty(department.HeadOfDepartmentId) && headOfDepartment != null)
+                        {
+                            <div class="mb-3">
+                                <h5>Head of Department</h5>
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">@headOfDepartment.FirstName @headOfDepartment.LastName</h6>
+                                        <p class="card-text"><strong>Email:</strong> @headOfDepartment.Email</p>
+                                        <p class="card-text"><strong>Position:</strong> @(headOfDepartment.Position ?? "Professor")</p>
+                                        <a href="/faculty/@headOfDepartment.Id" class="btn btn-sm btn-outline-primary">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">Department Stats</h5>
+                                <p><strong>Faculty Members:</strong> @(facultyMembers?.Count ?? 0)</p>
+                                <p><strong>Courses Offered:</strong> @(courses?.Count ?? 0)</p>
+                                <p><strong>Students Enrolled:</strong> @(studentsCount)</p>
+                                <div class="mt-3">
+                                    <a href="/faculty?departmentId=@department.Id" class="btn btn-sm btn-outline-primary">View Faculty</a>
+                                    <a href="/courses?departmentId=@department.Id" class="btn btn-sm btn-outline-primary">View Courses</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (facultyMembers != null && facultyMembers.Any())
+                {
+                    <div class="mt-4">
+                        <h4 class="text-primary">Faculty Members</h4>
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            @foreach (var faculty in facultyMembers.Take(3))
+                            {
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@faculty.FirstName @faculty.LastName</h5>
+                                            <p class="card-text"><strong>Position:</strong> @(faculty.Position ?? "Not specified")</p>
+                                            <p class="card-text"><strong>Email:</strong> @faculty.Email</p>
+                                            <p class="card-text"><strong>Office:</strong> @(faculty.Office ?? "Not assigned")</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="/faculty/@faculty.Id" class="btn btn-primary btn-sm">View Profile</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        
+                        @if (facultyMembers.Count > 3)
+                        {
+                            <div class="text-center mt-3">
+                                <a href="/faculty?departmentId=@department.Id" class="btn btn-outline-primary">View All Faculty Members</a>
+                            </div>
+                        }
+                    </div>
+                }
+
+                @if (courses != null && courses.Any())
+                {
+                    <div class="mt-4">
+                        <h4 class="text-primary">Courses Offered</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Course Code</th>
+                                        <th>Name</th>
+                                        <th>Credits</th>
+                                        <th>Instructor</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var course in courses)
+                                    {
+                                        <tr>
+                                            <td>@course.CourseCode</td>
+                                            <td>@course.Name</td>
+                                            <td>@course.Credits</td>
+                                            <td>
+                                                @{
+                                                    var instructor = facultyMembers?.FirstOrDefault(f => f.Id == course.FacultyId);
+                                                }
+                                                @(instructor != null ? $"{instructor.FirstName} {instructor.LastName}" : "Not Assigned")
+                                            </td>
+                                            <td>
+                                                <a href="/courses/@course.Id" class="btn btn-primary btn-sm">View Details</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    private DepartmentModel department;
+    private List<FacultyModel> facultyMembers;
+    private FacultyModel headOfDepartment;
+    private List<CourseModel> courses;
+    private int studentsCount = 0;
+    private bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDepartment();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadDepartment();
+    }
+
+    private async Task LoadDepartment()
+    {
+        loading = true;
+        try
+        {
+            department = await DepartmentService.GetByIdAsync(Id);
+            
+            if (department != null)
+            {
+                // Load related data
+                facultyMembers = await FacultyService.GetFacultyByDepartmentAsync(Id);
+                
+                if (!string.IsNullOrEmpty(department.HeadOfDepartmentId))
+                {
+                    headOfDepartment = await FacultyService.GetByIdAsync(department.HeadOfDepartmentId);
+                }
+                
+                courses = await CourseService.GetCoursesByDepartmentAsync(Id);
+                
+                // Count students enrolled in this department's courses
+                var studentsInCourses = new HashSet<string>();
+                foreach (var course in courses)
+                {
+                    if (course.EnrolledStudentIds != null)
+                    {
+                        foreach (var studentId in course.EnrolledStudentIds)
+                        {
+                            studentsInCourses.Add(studentId);
+                        }
+                    }
+                }
+                studentsCount = studentsInCourses.Count;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading department: {ex.Message}");
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}

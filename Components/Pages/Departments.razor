@@ -10,7 +10,8 @@
 <div class="row mb-4">
     <div class="col">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search departments..." @bind="searchTerm" @bind:event="oninput" />
+            <input type="text" class="form-control" placeholder="Search departments..." @bind="searchTerm"
+                @bind:event="oninput" />
             <button class="btn btn-outline-primary" type="button" @onclick="FilterDepartments">Search</button>
         </div>
     </div>
@@ -60,17 +61,19 @@ else
 
     private void FilterDepartments()
     {
+        if (departments == null) return;
+
         if (string.IsNullOrWhiteSpace(searchTerm))
         {
             filteredDepartments = departments;
         }
         else
         {
-            filteredDepartments = departments?
-                .Where(d => d.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                           d.DepartmentCode.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                           (d.Description != null && d.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
-                .ToList();
+            filteredDepartments = departments
+            .Where(d => (d.Name != null && d.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)) ||
+            (d.DepartmentCode != null && d.DepartmentCode.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)) ||
+            (d.Description != null && d.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
+            .ToList();
         }
     }
 }
